@@ -12,7 +12,9 @@
     <!-- Sezione Hero -->
     <div class="hero-section">
         <header class="header">
-            <img src="assets/icona.png" alt="Club 1 Piano" class="logo">
+            <a href="index.html">
+                <img src="assets/icona.png" alt="Club 1 Piano" class="logo">
+            </a>
         </header>
 
         <main class="content">
@@ -100,23 +102,163 @@
                     serata</p>
             </div>
 
-            <!-- Drink Card Example -->
-            <div class="drink-card">
-                <div class="drink-image">
-                    <img src="porta-galliana.jpg" alt="Porta Galliana Spritz">
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <!-- Drink Card 1 -->
+                    <div class="drink-card">
+                        <div class="drink-image">
+                            <img src="assets/spritz.png" alt="Porta Galliana Spritz">
+                        </div>
+                        <div class="drink-info">
+                            <h4 class="drink-name">Porta Galliana Spritz</h4>
+                            <p class="drink-price">€ 8,00</p>
+                            <button class="order-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11M5 9H19L20 21H4L5 9Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Prenota
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drink Card 2 -->
+                    <div class="drink-card">
+                        <div class="drink-image">
+                            <img src="assets/mojito.png" alt="Mojito Classico">
+                        </div>
+                        <div class="drink-info">
+                            <h4 class="drink-name">Mojito Classico</h4>
+                            <p class="drink-price">€ 9,00</p>
+                            <button class="order-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11M5 9H19L20 21H4L5 9Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Prenota
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drink Card 3 -->
+                    <div class="drink-card">
+                        <div class="drink-image">
+                            <img src="assets/negroni.png" alt="Negroni Sbagliato">
+                        </div>
+                        <div class="drink-info">
+                            <h4 class="drink-name">Negroni</h4>
+                            <p class="drink-price">€ 10,00</p>
+                            <button class="order-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11M5 9H19L20 21H4L5 9Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Prenota
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Drink Card 4 -->
+                    <div class="drink-card">
+                        <div class="drink-image">
+                            <img src="assets/martini.png" alt="Martini Dry">
+                        </div>
+                        <div class="drink-info">
+                            <h4 class="drink-name">Martini Dry</h4>
+                            <p class="drink-price">€ 11,00</p>
+                            <button class="order-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11M5 9H19L20 21H4L5 9Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Prenota
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="drink-info">
-                    <h4 class="drink-name">Porta Galliana S...</h4>
-                    <p class="drink-price">€ 8,00</p>
-                    <button class="order-btn">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M16 11V7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7V11M5 9H19L20 21H4L5 9Z"
-                                stroke="currentColor" stroke-width="2" />
-                        </svg>
-                        Prenota
-                    </button>
+
+                <!-- Indicatori -->
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="map-container">
+        <div class="map-header">
+            <svg class="location-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    fill="currentColor" />
+            </svg>
+            <div>
+                <h3 class="map-title">Dove Trovarci</h3>
+                <p class="map-address">Via Bastioni Settentrionali Rimini (RN)</p>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9369.393291040536!2d12.561825619869468!3d44.05940990940873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132cc3c8da5a9aa9%3A0xc8ec1fbf79dcd65!2sClub%20Primo%20Piano%20-%20Porta%20Galliana%20(Pub%20-%20Ristorante)!5e0!3m2!1sen!2sit!4v1766006345055!5m2!1sen!2sit"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="map-overlay">
+                <button class="expand-map">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                            fill="currentColor" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="map-info">
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="info-content">
+                        <span class="info-label">Distanza</span>
+                        <span class="info-value">5 min dal centro</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
+                                fill="currentColor" />
+                        </svg>
+                    </div>
+                    <div class="info-content">
+                        <span class="info-label">Parcheggio</span>
+                        <span class="info-value">Disponibile</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="directions-btn">
+                <a class="link-mappa" href="https://maps.app.goo.gl/KRP1ATtiMnaurC4q6" >
+
+                    Ottieni Indicazioni
+                </a>
+            </button>
         </div>
     </div>
     <!-- Footer -->

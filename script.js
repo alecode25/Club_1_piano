@@ -1,5 +1,5 @@
 // Gestione click bottoni
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const btnPrimary = document.querySelector('.btn-primary');
     const btnSecondary = document.querySelector('.btn-secondary');
     const menuLink = document.querySelector('.menu-link');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Click bottone prenotazione
     if (btnPrimary) {
-        btnPrimary.addEventListener('click', function() {
+        btnPrimary.addEventListener('click', function () {
             console.log('Prenotazione tavolo richiesta');
             alert('Funzionalità di prenotazione in arrivo!');
         });
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Click bottone eventi
     if (btnSecondary) {
-        btnSecondary.addEventListener('click', function() {
+        btnSecondary.addEventListener('click', function () {
             console.log('Visualizza prossimo evento');
             alert('Scopri i nostri eventi!');
         });
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Click link menù - scroll smooth alla sezione menu
     if (menuLink) {
-        menuLink.addEventListener('click', function(e) {
+        menuLink.addEventListener('click', function (e) {
             e.preventDefault();
             const menuSection = document.getElementById('menu');
             if (menuSection) {
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Click categorie cibo
-    categoryBtns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
+    categoryBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
             const category = this.closest('.category-card').querySelector('.category-title').textContent;
             console.log('Categoria selezionata:', category);
             alert('Visualizzazione categoria: ' + category);
@@ -45,21 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Click bottone ordina drink
     if (orderBtn) {
-        orderBtn.addEventListener('click', function() {
+        orderBtn.addEventListener('click', function () {
             console.log('Prenota drink');
             alert('Aggiungi al carrello!');
         });
     }
 
     // Navigazione bottom nav
-    navItems.forEach(function(item) {
-        item.addEventListener('click', function(e) {
+    navItems.forEach(function (item) {
+        item.addEventListener('click', function (e) {
             e.preventDefault();
-            navItems.forEach(function(nav) {
+            navItems.forEach(function (nav) {
                 nav.classList.remove('active');
             });
             this.classList.add('active');
-            
+
             const section = this.querySelector('span').textContent;
             console.log('Navigazione a:', section);
         });
@@ -70,8 +70,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (content) {
         content.style.opacity = '0';
         content.style.transform = 'translateY(20px)';
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             content.style.transition = 'all 0.8s ease';
             content.style.opacity = '1';
             content.style.transform = 'translateY(0)';
@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Animazione menu section quando entra in viewport
     const menuSection = document.querySelector('.menu-section');
     if (menuSection) {
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
@@ -93,7 +93,35 @@ document.addEventListener('DOMContentLoaded', function() {
         menuSection.style.opacity = '0';
         menuSection.style.transform = 'translateY(30px)';
         menuSection.style.transition = 'all 0.8s ease';
-        
+
         observer.observe(menuSection);
     }
+});
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.drink-card');
+const dots = document.querySelectorAll('.dot');
+const wrapper = document.querySelector('.carousel-wrapper');
+const totalSlides = slides.length;
+
+function goToSlide(index) {
+    currentSlide = index;
+    wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    goToSlide(currentSlide);
+}
+
+// Auto scroll ogni 5 secondi
+setInterval(nextSlide, 5000);
+
+// Click sui dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
 });
