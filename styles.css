@@ -14,7 +14,7 @@ body {
 /* ===== HERO SECTION ===== */
 .hero-section {
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/home.JPG')loading="lazy";
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/home.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
