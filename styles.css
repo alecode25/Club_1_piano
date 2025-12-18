@@ -267,7 +267,7 @@ body {
 }
 
 .featured-drink {
-    background-image: url("assets/drink.png");
+    background-image: url("assets/drink.webp");
     background-size: cover;
     /* Copre tutto lo spazio */
     background-position: left;
