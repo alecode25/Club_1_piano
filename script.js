@@ -34,22 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Click categorie cibo
-    categoryBtns.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            const category = this.closest('.category-card').querySelector('.category-title').textContent;
-            console.log('Categoria selezionata:', category);
-            alert('Visualizzazione categoria: ' + category);
-        });
-    });
-
-    // Click bottone ordina drink
-    if (orderBtn) {
-        orderBtn.addEventListener('click', function () {
-            console.log('Prenota drink');
-            alert('Aggiungi al carrello!');
-        });
-    }
 
     // Navigazione bottom nav
     navItems.forEach(function (item) {

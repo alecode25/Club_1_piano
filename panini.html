@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="dark" lang="it">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>Menu Hamburger - Club Primo Piano</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffb200",
+                        "background-dark": "#0A0A0A",
+                        "surface-dark": "#161616",
+                        "text-primary": "#F5F2EB",
+                        "text-secondary": "#bcb29a",
+                    },
+                    fontFamily: {
+                        "display": ["Be Vietnam Pro", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .burger-card { transition: transform 0.2s; }
+        .burger-card:active { transform: scale(0.98); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-scale:active { transform: scale(0.95); transition: transform 0.1s; }
+    </style>
+</head>
+<body class="bg-background-dark text-text-primary font-display antialiased overflow-x-hidden">
+
+<a href="index.html" class="fixed bottom-6 left-6 z-[100] flex items-center justify-center w-14 h-14 bg-primary text-background-dark rounded-full shadow-[0_8px_30px_rgba(255,178,0,0.4)] active-scale">
+    <span class="material-symbols-outlined font-bold">home</span>
+</a>
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#3a3427]">
+    <div class="max-w-[1200px] mx-auto px-4 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-background-dark">
+                <span class="material-symbols-outlined !text-[18px]">lunch_dining</span>
+            </div>
+            <span class="text-white font-bold text-sm uppercase tracking-tight">Club Primo Piano</span>
+        </div>
+        <span class="text-primary text-[10px] font-bold border border-primary/30 px-2 py-1 rounded">FOOD MENU</span>
+    </div>
+</header>
+
+<main class="pt-16 pb-24">
+    <section class="px-4 py-10 text-center bg-gradient-to-b from-primary/10 to-transparent">
+      <span class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Porta Galliana • Rimini</span>
+        <h1 class="text-4xl font-black text-white mb-4">I NOSTRI <span class="text-primary">BURGER</span></h1>
+        <div class="h-1 w-12 bg-primary mx-auto"></div>
+    </section>
+
+    <div class="sticky top-16 z-40 bg-background-dark/95 backdrop-blur-sm py-4 border-b border-white/5 overflow-x-auto no-scrollbar px-4 flex gap-2">
+        <a href="#classici" class="whitespace-nowrap px-5 py-2 bg-primary text-background-dark rounded-full text-[11px] font-bold uppercase">Classici</a>
+        <a href="#smash" class="whitespace-nowrap px-5 py-2 bg-surface-dark text-text-secondary border border-white/10 rounded-full text-[11px] font-bold uppercase">Smash</a>
+        <a href="#special" class="whitespace-nowrap px-5 py-2 bg-surface-dark text-text-secondary border border-white/10 rounded-full text-[11px] font-bold uppercase">Special</a>
+    </div>
+
+    <div class="max-w-[1200px] mx-auto px-4 mt-8 space-y-12">
+        
+        <section id="classici" class="space-y-6">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> HAMBURGER
+            </h2>
+            
+            <div class="grid grid-cols-1 gap-4">
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Classic Burger</h3>
+                        <span class="text-primary font-black">€10,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, cheddar, lattuga, pomodoro, salsa burger.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Cheese Lover</h3>
+                        <span class="text-primary font-black">€11,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, doppio cheddar, cipolla caramellata, lattuga, salsa burger.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Bacon Cheese Burger</h3>
+                        <span class="text-primary font-black">€12,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, bacon croccante, cheddar, cipolla caramellata, lattuga, salsa burger.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight text-green-500">Veggie Burger</h3>
+                        <span class="text-primary font-black">€10,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, burger vegetale, lattuga, pomodoro, cipolla, salsa yogurt.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="smash" class="space-y-6">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> SMASH BURGERS
+            </h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-primary/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary text-background-dark px-3 py-1 text-[10px] font-black uppercase">Most Wanted</div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Double Smash</h3>
+                        <span class="text-primary font-black">€13,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, doppio manzo scelto smashed, cheddar, bacon piastrato, smokey baconnaise.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Triple Smash</h3>
+                        <span class="text-primary font-black">€14,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, triplo manzo scelto smashed, doppio cheddar, bacon piastrato, smokey baconnaise.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Special Smash</h3>
+                        <span class="text-primary font-black">€15,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, doppio manzo scelto smashed, cheddar, bacon piastrato, lattuga, pomodoro fresco, smokey baconnaise.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="special" class="space-y-6 pb-12">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> SPECIAL BURGERS
+            </h2>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Chicken Crunch</h3>
+                        <span class="text-primary font-black">€13,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, filetto di pollo croccante, lattuga, pomodoro, maionese.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight text-blue-400">Blue Cheese Burger</h3>
+                        <span class="text-primary font-black">€14,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, crema al gorgonzola, cipolla caramellata, rucola.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Truffle Burger</h3>
+                        <span class="text-primary font-black">€14,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, crema di tartufo, rucola.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-primary/40">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Romagnolo</h3>
+                        <span class="text-primary font-black">€15,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Bun homemade, hamburger di manzo 180 g, squacquerone, rucola, prosciutto crudo stagionato 24 mesi.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer class="bg-black border-t border-white/5 py-10 px-4 text-center">
+    <p class="text-text-secondary text-[10px] uppercase tracking-widest mb-2">Club Primo Piano • Hamburgeria</p>
+    <p class="text-white/20 text-[9px]">Tutti i nostri hamburger sono serviti con ingredienti freschi.</p>
+</footer>
+
+</body>
+</html>
