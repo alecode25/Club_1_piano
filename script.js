@@ -1,56 +1,43 @@
-// Gestione click bottoni
+// ===== INIZIALIZZAZIONE AL CARICAMENTO PAGINA =====
 document.addEventListener('DOMContentLoaded', function () {
+    // Riferimenti agli elementi
     const btnPrimary = document.querySelector('.btn-primary');
     const btnSecondary = document.querySelector('.btn-secondary');
     const menuLink = document.querySelector('.menu-link');
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    const orderBtn = document.querySelector('.order-btn');
-    const navItems = document.querySelectorAll('.nav-item');
+    const content = document.querySelector('.content');
+    const menuSection = document.querySelector('.menu-section');
 
-    // Click bottone prenotazione
+    // ===== GESTIONE BOTTONI HERO =====
     if (btnPrimary) {
         btnPrimary.addEventListener('click', function () {
-            console.log('Prenotazione tavolo richiesta');
-            alert('Funzionalità di prenotazione in arrivo!');
-        });
-    }
-
-    // Click bottone eventi
-    if (btnSecondary) {
-        btnSecondary.addEventListener('click', function () {
-            console.log('Visualizza prossimo evento');
-            alert('Scopri i nostri eventi!');
-        });
-    }
-
-    // Click link menù - scroll smooth alla sezione menu
-    if (menuLink) {
-        menuLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            const menuSection = document.getElementById('menu');
-            if (menuSection) {
-                menuSection.scrollIntoView({ behavior: 'smooth' });
+            const prenotaSection = document.getElementById('prenota');
+            if (prenotaSection) {
+                prenotaSection.scrollIntoView({ behavior: 'smooth' });
             }
         });
     }
 
-
-    // Navigazione bottom nav
-    navItems.forEach(function (item) {
-        item.addEventListener('click', function (e) {
-            e.preventDefault();
-            navItems.forEach(function (nav) {
-                nav.classList.remove('active');
-            });
-            this.classList.add('active');
-
-            const section = this.querySelector('span').textContent;
-            console.log('Navigazione a:', section);
+    if (btnSecondary) {
+        btnSecondary.addEventListener('click', function () {
+            const eventiSection = document.getElementById('eventi');
+            if (eventiSection) {
+                eventiSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
-    });
+    }
 
-    // Animazione fade-in al caricamento
-    const content = document.querySelector('.content');
+    // ===== SCROLL SMOOTH AL MENU =====
+    if (menuLink) {
+        menuLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            const menu = document.getElementById('menu');
+            if (menu) {
+                menu.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // ===== ANIMAZIONE FADE-IN HERO =====
     if (content) {
         content.style.opacity = '0';
         content.style.transform = 'translateY(20px)';
@@ -62,8 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 100);
     }
 
-    // Animazione menu section quando entra in viewport
-    const menuSection = document.querySelector('.menu-section');
+    // ===== ANIMAZIONE MENU SECTION =====
     if (menuSection) {
         const observer = new IntersectionObserver(function (entries) {
             entries.forEach(function (entry) {
@@ -82,15 +68,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+// ===== CAROUSEL DRINKS =====
 let currentSlide = 0;
 const slides = document.querySelectorAll('.drink-card');
 const dots = document.querySelectorAll('.dot');
 const wrapper = document.querySelector('.carousel-wrapper');
+const container = document.querySelector('.carousel-container');
 const totalSlides = slides.length;
 
 function goToSlide(index) {
     currentSlide = index;
-    wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+    if (wrapper && container) {
+        // Usa la larghezza del container per calcolare lo spostamento
+        const containerWidth = container.offsetWidth - 40; // Sottrai il padding
+        const gap = 20;
+        const offset = (containerWidth + gap) * currentSlide;
+        wrapper.style.transform = `translateX(-${offset}px)`;
+    }
 
     dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentSlide);
@@ -103,132 +97,120 @@ function nextSlide() {
 }
 
 // Auto scroll ogni 5 secondi
-setInterval(nextSlide, 5000);
+if (totalSlides > 0) {
+    setInterval(nextSlide, 5000);
+
+    // Ricalcola la posizione quando la finestra viene ridimensionata
+    window.addEventListener('resize', () => goToSlide(currentSlide));
+}
 
 // Click sui dots
 dots.forEach((dot, index) => {
     dot.addEventListener('click', () => goToSlide(index));
 });
 
-// --- 1. LOGICA DELLO SLIDER (SCORRIMENTO) ---
+// ===== SLIDER EVENTI (DRAG TO SCROLL) =====
 const slider = document.querySelector('.event-slider');
-let isDown = false;
-let startX;
-let scrollLeft;
 
-// Supporto per il trascinamento con il Mouse (per PC)
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.style.cursor = 'grabbing';
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-});
+if (slider) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-slider.addEventListener('mouseleave', () => {
-    isDown = false;
-    slider.style.cursor = 'grab';
-});
+    // Mouse events
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.style.cursor = 'grabbing';
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
 
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.style.cursor = 'grab';
-});
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
 
-slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Velocità di scorrimento
-    slider.scrollLeft = scrollLeft - walk;
-});
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.style.cursor = 'grab';
+    });
 
-// --- 2. GESTIONE CONTATORE PERSONE ---
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
+
+// ===== CONTATORE PERSONE =====
 function changeQty(val) {
     const el = document.getElementById('numPersone');
-    let current = parseInt(el.innerText);
-    if (current + val >= 1) {
-        el.innerText = current + val;
+    if (el) {
+        let current = parseInt(el.innerText);
+        if (current + val >= 1) {
+            el.innerText = current + val;
+        }
     }
 }
 
-// --- 3. INVIO DATI A GOOGLE SHEETS ---
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// ===== FORM PRENOTAZIONE =====
+const bookingForm = document.getElementById('bookingForm');
 
-    const btn = e.target.querySelector('button');
-    btn.innerText = "Invio in corso...";
-    btn.disabled = true;
+if (bookingForm) {
+    bookingForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    const dati = {
-        nome: document.getElementById('nome').value,
-        telefono: document.getElementById('telefono').value,
-        dataPrenotazione: document.getElementById('data').value,
-        ora: document.getElementById('ora').value,
-        persone: document.getElementById('numPersone').innerText
-    };
+        const btn = e.target.querySelector('button[type="submit"]');
+        const originalText = btn.innerText;
+        btn.innerText = "Invio in corso...";
+        btn.disabled = true;
 
-    // Sostituisci con il tuo URL dell'App Web di Google Sheets
-    const scriptURL = 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI';
+        // Raccolta dati
+        const dati = {
+            nome: document.getElementById('nome').value,
+            telefono: document.getElementById('telefono').value,
+            dataPrenotazione: document.getElementById('data').value,
+            ora: document.getElementById('ora').value,
+            persone: document.getElementById('numPersone').innerText
+        };
 
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', 
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dati)
-    })
-    .then(() => {
-        alert("Prenotazione inviata! Controlla il foglio Google.");
-        document.getElementById('bookingForm').reset();
-        document.getElementById('numPersone').innerText = "2";
-        btn.innerText = "Conferma Prenotazione";
-        btn.disabled = false;
-    })
-    .catch(error => {
-        console.error('Errore:', error);
-        alert("Errore nell'invio. Riprova.");
-        btn.disabled = false;
+        // URL dell'App Web di Google Sheets (SOSTITUISCI CON IL TUO)
+        const scriptURL = 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI';
+
+        // Se non hai ancora configurato Google Sheets, mostra un alert
+        if (scriptURL === 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI') {
+            console.log('Prenotazione ricevuta:', dati);
+            alert(`Prenotazione ricevuta!\n\nNome: ${dati.nome}\nTelefono: ${dati.telefono}\nData: ${dati.dataPrenotazione}\nOra: ${dati.ora}\nPersone: ${dati.persone}\n\nConfigura Google Sheets per salvare i dati.`);
+
+            bookingForm.reset();
+            document.getElementById('numPersone').innerText = "2";
+            btn.innerText = originalText;
+            btn.disabled = false;
+            return;
+        }
+
+        // Invio a Google Sheets
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            cache: 'no-cache',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dati)
+        })
+            .then(() => {
+                alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
+                bookingForm.reset();
+                document.getElementById('numPersone').innerText = "2";
+                btn.innerText = originalText;
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert("Si è verificato un errore. Riprova più tardi.");
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
     });
-});
-
-// Gestione invio form prenotazione a Google Sheets
-
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const btn = e.target.querySelector('button');
-    btn.innerText = "Invio in corso...";
-    btn.disabled = true;
-
-    // Raccolta dati
-    const dati = {
-        nome: document.getElementById('nome').value,
-        telefono: document.getElementById('telefono').value,
-        dataPrenotazione: document.getElementById('data').value,
-        ora: document.getElementById('ora').value,
-        persone: document.getElementById('numPersone').innerText
-    };
-
-    // URL dell'App Web di Google Sheets (INCOLLA QUI IL TUO URL)
-    const scriptURL = 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI';
-
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Necessario per Google Apps Script
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dati)
-    })
-    .then(() => {
-        alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
-        document.getElementById('bookingForm').reset();
-        document.getElementById('numPersone').innerText = "2";
-        btn.innerText = "Conferma Prenotazione";
-        btn.disabled = false;
-    })
-    .catch(error => {
-        console.error('Errore:', error);
-        alert("Si è verificato un errore. Riprova più tardi.");
-        btn.disabled = false;
-    });
-});
+}
