@@ -80,9 +80,9 @@ function goToSlide(index) {
     currentSlide = index;
     if (wrapper && container) {
         // Calcola il padding del container in base alla larghezza dello schermo
-        const containerPadding = window.innerWidth >= 768 ? 40 : 20; // 20px per mobile, 40px per desktop
+        const containerPadding = window.innerWidth >= 768 ? 40 : 10; // 10px per mobile, 40px per desktop
         const containerWidth = container.offsetWidth - containerPadding;
-        const gap = window.innerWidth >= 768 ? 20 : 15; // 15px per mobile, 20px per desktop
+        const gap = window.innerWidth >= 768 ? 20 : 10; // 10px per mobile, 20px per desktop
         const offset = (containerWidth + gap) * currentSlide;
         wrapper.style.transform = `translateX(-${offset}px)`;
     }
