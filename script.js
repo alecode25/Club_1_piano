@@ -79,9 +79,10 @@ const totalSlides = slides.length;
 function goToSlide(index) {
     currentSlide = index;
     if (wrapper && container) {
-        // Usa la larghezza del container per calcolare lo spostamento
-        const containerWidth = container.offsetWidth - 40; // Sottrai il padding
-        const gap = 20;
+        // Calcola il padding del container in base alla larghezza dello schermo
+        const containerPadding = window.innerWidth >= 768 ? 40 : 20; // 20px per mobile, 40px per desktop
+        const containerWidth = container.offsetWidth - containerPadding;
+        const gap = window.innerWidth >= 768 ? 20 : 15; // 15px per mobile, 20px per desktop
         const offset = (containerWidth + gap) * currentSlide;
         wrapper.style.transform = `translateX(-${offset}px)`;
     }
@@ -99,7 +100,7 @@ function nextSlide() {
 // Auto scroll ogni 5 secondi
 if (totalSlides > 0) {
     setInterval(nextSlide, 5000);
-
+    
     // Ricalcola la posizione quando la finestra viene ridimensionata
     window.addEventListener('resize', () => goToSlide(currentSlide));
 }
@@ -159,7 +160,7 @@ function changeQty(val) {
 const bookingForm = document.getElementById('bookingForm');
 
 if (bookingForm) {
-    bookingForm.addEventListener('submit', function (e) {
+    bookingForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
         const btn = e.target.querySelector('button[type="submit"]');
@@ -183,7 +184,7 @@ if (bookingForm) {
         if (scriptURL === 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI') {
             console.log('Prenotazione ricevuta:', dati);
             alert(`Prenotazione ricevuta!\n\nNome: ${dati.nome}\nTelefono: ${dati.telefono}\nData: ${dati.dataPrenotazione}\nOra: ${dati.ora}\nPersone: ${dati.persone}\n\nConfigura Google Sheets per salvare i dati.`);
-
+            
             bookingForm.reset();
             document.getElementById('numPersone').innerText = "2";
             btn.innerText = originalText;
@@ -199,18 +200,18 @@ if (bookingForm) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dati)
         })
-            .then(() => {
-                alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
-                bookingForm.reset();
-                document.getElementById('numPersone').innerText = "2";
-                btn.innerText = originalText;
-                btn.disabled = false;
-            })
-            .catch(error => {
-                console.error('Errore:', error);
-                alert("Si è verificato un errore. Riprova più tardi.");
-                btn.innerText = originalText;
-                btn.disabled = false;
-            });
+        .then(() => {
+            alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
+            bookingForm.reset();
+            document.getElementById('numPersone').innerText = "2";
+            btn.innerText = originalText;
+            btn.disabled = false;
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            alert("Si è verificato un errore. Riprova più tardi.");
+            btn.innerText = originalText;
+            btn.disabled = false;
+        });
     });
 }
