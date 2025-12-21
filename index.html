@@ -250,50 +250,64 @@
     </div>
 
     <!-- Sezione Prenotazioni -->
-    <div id="prenota" class="reservation-section">
+    <section class="reservation-section">
         <div class="reservation-container">
-            <div class="reservation-glow"></div>
-
-            <div class="reservation-header">
-                <h2 class="reservation-title">Riserva un Tavolo</h2>
-                <p class="reservation-subtitle">Vivi l'esperienza Primo Piano</p>
-            </div>
+            <h2 class="reservation-title">Prenota un Tavolo</h2>
+            <p class="reservation-subtitle">Compila il form per la tua prenotazione</p>
 
             <form id="bookingForm" class="booking-form">
                 <div class="form-row">
+                    <label for="nome">Nome</label>
                     <input type="text" id="nome" placeholder="Nome" required class="form-input">
-                    <input type="tel" id="telefono" placeholder="Telefono" required class="form-input">
                 </div>
 
                 <div class="form-row">
-                    <input type="date" id="data" required class="form-input">
-                    <select id="ora" required class="form-input">
-                        <option value="" disabled selected>Orario</option>
-                        <option>19:30</option>
-                        <option>20:00</option>
-                        <option>20:30</option>
-                        <option>21:00</option>
-                        <option>21:30</option>
-                        <option>22:00</option>
-                    </select>
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono" placeholder="Telefono" required class="form-input">
                 </div>
 
-                <div class="form-counter">
-                    <span class="counter-label">Persone</span>
-                    <div class="counter-controls">
-                        <button type="button" onclick="changeQty(-1)" class="counter-btn counter-minus">-</button>
-                        <span id="numPersone" class="counter-value">2</span>
-                        <button type="button" onclick="changeQty(1)" class="counter-btn counter-plus">+</button>
+                <div class="form-row two-cols">
+                    <div>
+                        <label for="data">Data</label>
+                        <input type="date" id="data" required class="form-input">
+                    </div>
+                    <div>
+                        <label for="ora">Orario</label>
+                        <select id="ora" required class="form-input">
+                            <option value="" disabled selected>Orario</option>
+                            <option>19:30</option>
+                            <option>20:00</option>
+                            <option>20:30</option>
+                            <option>21:00</option>
+                            <option>21:30</option>
+                            <option>22:00</option>
+                            <option>22:30</option>
+                            <option>23:00</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-counter">
+                        <span class="counter-label">Persone</span>
+                        <div class="counter-controls">
+                            <button type="button" onclick="changeQty(-1)" class="counter-btn counter-minus">-</button>
+                            <span id="numPersone" class="counter-value">2</span>
+                            <button type="button" onclick="changeQty(1)" class="counter-btn counter-plus">+</button>
+                        </div>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit">Conferma Prenotazione</button>
             </form>
         </div>
-    </div>
+    </section>
+
 
     <!-- Sezione Mappa -->
+    <div class="Title-map">Vieni a trovarci</div>
     <div class="map-container">
+
         <div class="map-header">
             <svg class="location-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
                 <path
@@ -301,7 +315,7 @@
                     fill="currentColor" />
             </svg>
             <div>
-                <h3 class="map-title">Dove Trovarci</h3>
+                <h3 class="map-title"></h3>
                 <p class="map-address">Via Bastioni Settentrionali Rimini (RN)</p>
             </div>
         </div>
