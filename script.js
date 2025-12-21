@@ -100,7 +100,7 @@ function nextSlide() {
 // Auto scroll ogni 5 secondi
 if (totalSlides > 0) {
     setInterval(nextSlide, 5000);
-    
+
     // Ricalcola la posizione quando la finestra viene ridimensionata
     window.addEventListener('resize', () => goToSlide(currentSlide));
 }
@@ -110,40 +110,46 @@ dots.forEach((dot, index) => {
     dot.addEventListener('click', () => goToSlide(index));
 });
 
-// ===== SLIDER EVENTI (DRAG TO SCROLL) =====
-const slider = document.querySelector('.event-slider');
+// ===== CAROUSEL EVENTI =====
+let currentEventSlide = 0;
+const eventSlides = document.querySelectorAll('.event-card');
+const eventDots = document.querySelectorAll('.event-dot');
+const eventWrapper = document.querySelector('.event-slider-wrapper');
+const eventContainer = document.querySelector('.event-slider');
+const totalEventSlides = eventSlides.length;
 
-if (slider) {
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+function goToEventSlide(index) {
+    currentEventSlide = index;
+    if (eventWrapper && eventContainer) {
+        const containerPadding = window.innerWidth >= 768 ? 40 : 10;
+        const containerWidth = eventContainer.offsetWidth - containerPadding;
+        const gap = window.innerWidth >= 768 ? 20 : 10;
+        const offset = (containerWidth + gap) * currentEventSlide;
+        eventWrapper.style.transform = `translateX(-${offset}px)`;
+    }
 
-    // Mouse events
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        slider.style.cursor = 'grabbing';
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-    });
-
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.style.cursor = 'grab';
-    });
-
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.style.cursor = 'grab';
-    });
-
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 2;
-        slider.scrollLeft = scrollLeft - walk;
+    eventDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentEventSlide);
     });
 }
+
+function nextEventSlide() {
+    currentEventSlide = (currentEventSlide + 1) % totalEventSlides;
+    goToEventSlide(currentEventSlide);
+}
+
+// Auto scroll eventi ogni 5 secondi
+if (totalEventSlides > 0) {
+    setInterval(nextEventSlide, 5000);
+
+    // Ricalcola la posizione quando la finestra viene ridimensionata
+    window.addEventListener('resize', () => goToEventSlide(currentEventSlide));
+}
+
+// Click sui dots degli eventi
+eventDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToEventSlide(index));
+});
 
 // ===== CONTATORE PERSONE =====
 function changeQty(val) {
@@ -160,7 +166,7 @@ function changeQty(val) {
 const bookingForm = document.getElementById('bookingForm');
 
 if (bookingForm) {
-    bookingForm.addEventListener('submit', function(e) {
+    bookingForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
         const btn = e.target.querySelector('button[type="submit"]');
@@ -184,7 +190,7 @@ if (bookingForm) {
         if (scriptURL === 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI') {
             console.log('Prenotazione ricevuta:', dati);
             alert(`Prenotazione ricevuta!\n\nNome: ${dati.nome}\nTelefono: ${dati.telefono}\nData: ${dati.dataPrenotazione}\nOra: ${dati.ora}\nPersone: ${dati.persone}\n\nConfigura Google Sheets per salvare i dati.`);
-            
+
             bookingForm.reset();
             document.getElementById('numPersone').innerText = "2";
             btn.innerText = originalText;
@@ -200,18 +206,18 @@ if (bookingForm) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dati)
         })
-        .then(() => {
-            alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
-            bookingForm.reset();
-            document.getElementById('numPersone').innerText = "2";
-            btn.innerText = originalText;
-            btn.disabled = false;
-        })
-        .catch(error => {
-            console.error('Errore:', error);
-            alert("Si è verificato un errore. Riprova più tardi.");
-            btn.innerText = originalText;
-            btn.disabled = false;
-        });
+            .then(() => {
+                alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
+                bookingForm.reset();
+                document.getElementById('numPersone').innerText = "2";
+                btn.innerText = originalText;
+                btn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert("Si è verificato un errore. Riprova più tardi.");
+                btn.innerText = originalText;
+                btn.disabled = false;
+            });
     });
 }

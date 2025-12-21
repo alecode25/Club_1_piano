@@ -417,29 +417,29 @@ body {
     .carousel-container {
         padding: 0 20px;
     }
-    
+
     .carousel-wrapper {
         gap: 20px;
     }
-    
+
     .drink-image {
         width: 160px;
         min-width: 160px;
     }
-    
+
     .drink-info {
         gap: 10px;
         padding: 20px 32px;
     }
-    
+
     .drink-name {
         font-size: 21px;
     }
-    
+
     .drink-price {
         font-size: 24px;
     }
-    
+
     .order-btn {
         padding: 12px 28px;
         font-size: 16px;
@@ -486,7 +486,7 @@ body {
 /* ===== EVENTI SECTION ===== */
 .eventi-section {
     padding: 60px 0;
-    background: #0A0A0A;
+    background: black;
     overflow: hidden;
 }
 
@@ -496,25 +496,32 @@ body {
     font-size: 2rem;
     margin-bottom: 30px;
     font-weight: 900;
+    font-style: italic;
+    line-height: 1.2;
+
 }
 
 .event-slider {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 0 20px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    max-width: 950px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 5px;
 }
 
-.event-slider::-webkit-scrollbar {
-    display: none;
+.event-slider-wrapper {
+    display: flex;
+    gap: 10px;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .event-card {
-    flex: 0 0 300px;
-    scroll-snap-align: start;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    flex-shrink: 0;
+    padding: 20px;
 }
 
 .event-card-inner {
@@ -527,6 +534,12 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.event-card-inner:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 179, 0, 0.15);
 }
 
 .event-card-special {
@@ -562,10 +575,52 @@ body {
     margin: 0;
 }
 
+/* Event Slider Dots */
+.event-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.event-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 179, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.event-dot.active {
+    background: #ffb300;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.event-dot:hover {
+    background: rgba(255, 179, 0, 0.6);
+}
+
+/* Responsive per desktop */
+@media (min-width: 768px) {
+    .event-slider {
+        padding: 0 20px;
+    }
+
+    .event-slider-wrapper {
+        gap: 20px;
+    }
+
+    .event-card-inner {
+        height: 450px;
+    }
+}
+
 /* ===== RESERVATION SECTION ===== */
 .reservation-section {
     padding: 60px 20px;
-    background: #0A0A0A;
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -608,6 +663,8 @@ body {
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: -1px;
+    font-style: italic;
+    line-height: 1.2;
 }
 
 .reservation-subtitle {
@@ -1032,11 +1089,11 @@ body {
     .reservation-container {
         padding: 25px 20px;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
     }
-    
+
     .info-grid {
         grid-template-columns: 1fr;
     }
@@ -1093,28 +1150,5 @@ body {
     .drink-section {
         max-width: 1200px;
         margin: 0 auto;
-    }
-
-    .footer-content {
-        flex-direction: row;
-    }
-}
-
-@media (min-width: 1024px) {
-    .content {
-        max-width: 800px;
-        padding: 0 40px 100px 40px;
-    }
-
-    .title {
-        font-size: 52px;
-    }
-
-    .description {
-        font-size: 20px;
-    }
-
-    .menu-title {
-        font-size: 52px;
     }
 }
