@@ -161,63 +161,58 @@ function changeQty(val) {
         }
     }
 }
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz7Pzxrvi1eEXLbIHfmW8w19ZgP2U2sEqInDeVPNikw8GlTl-D4JGNT1wJ3HAYLclbvtg/exec'; // <-- tuo URL
 
-// ===== FORM PRENOTAZIONE =====
-const bookingForm = document.getElementById('bookingForm');
+document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-if (bookingForm) {
-    bookingForm.addEventListener('submit', function (e) {
-        e.preventDefault();
+    const submitBtn = document.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio...';
 
-        const btn = e.target.querySelector('button[type="submit"]');
-        const originalText = btn.innerText;
-        btn.innerText = "Invio in corso...";
-        btn.disabled = true;
+    const dateStr = document.getElementById('data').value;        // es. 2025-12-21
+    const timeStr = document.getElementById('ora').value;         // es. 20:00
+    const name = document.getElementById('nome').value.trim();
+    const phone = document.getElementById('telefono').value.trim();
+    const people = Number(document.getElementById('numPersone').textContent);
 
-        // Raccolta dati
-        const dati = {
-            nome: document.getElementById('nome').value,
-            telefono: document.getElementById('telefono').value,
-            dataPrenotazione: document.getElementById('data').value,
-            ora: document.getElementById('ora').value,
-            persone: document.getElementById('numPersone').innerText
-        };
+    // Oggetto che verrà letto da doPost(e) in Apps Script
+    const payload = {
+        action: 'creaPrenotazione',
+        dateStr,
+        timeStr,
+        name,
+        phone,
+        people
+    };
 
-        // URL dell'App Web di Google Sheets (SOSTITUISCI CON IL TUO)
-        const scriptURL = 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI';
+    try {
+        const res = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
 
-        // Se non hai ancora configurato Google Sheets, mostra un alert
-        if (scriptURL === 'IL_TUO_URL_DI_GOOGLE_APPS_SCRIPT_QUI') {
-            console.log('Prenotazione ricevuta:', dati);
-            alert(`Prenotazione ricevuta!\n\nNome: ${dati.nome}\nTelefono: ${dati.telefono}\nData: ${dati.dataPrenotazione}\nOra: ${dati.ora}\nPersone: ${dati.persone}\n\nConfigura Google Sheets per salvare i dati.`);
+        console.log('HTTP status:', res.status, res.statusText);
 
-            bookingForm.reset();
-            document.getElementById('numPersone').innerText = "2";
-            btn.innerText = originalText;
-            btn.disabled = false;
-            return;
+        const text = await res.text();
+        console.log('Raw response text:', text);
+
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch (e) {
+            throw new Error('Risposta non JSON: ' + text);
         }
 
-        // Invio a Google Sheets
-        fetch(scriptURL, {
-            method: 'POST',
-            mode: 'no-cors',
-            cache: 'no-cache',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(dati)
-        })
-            .then(() => {
-                alert("Prenotazione ricevuta! Ti aspettiamo al Club 1 Piano.");
-                bookingForm.reset();
-                document.getElementById('numPersone').innerText = "2";
-                btn.innerText = originalText;
-                btn.disabled = false;
-            })
-            .catch(error => {
-                console.error('Errore:', error);
-                alert("Si è verificato un errore. Riprova più tardi.");
-                btn.innerText = originalText;
-                btn.disabled = false;
-            });
-    });
-}
+        alert(data.message || 'Risposta ricevuta');
+
+    } catch (err) {
+        console.error('Fetch error:', err);
+        alert('Errore di connessione: ' + err.message);
+    }
+
+});
