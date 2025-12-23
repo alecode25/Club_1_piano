@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         const notification = document.createElement('div');
-        
+
         const icons = {
             success: '✅',
             error: '❌',
@@ -149,15 +149,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCwGN6GIus5mZ4-eEHyOVF-ienzfMxRPyHX80bz1CBlQODma6-FrQiaOssvsjrRWFdtA/exec';
 
     // ===== Riferimenti base =====
-    const btnPrimary   = document.querySelector('.btn-primary');
+    const btnPrimary = document.querySelector('.btn-primary');
     const btnSecondary = document.querySelector('.btn-secondary');
-    const menuLink     = document.querySelector('.menu-link');
-    const content      = document.querySelector('.content');
-    const menuSection  = document.querySelector('.menu-section');
+    const menuLink = document.querySelector('.menu-link');
+    const content = document.querySelector('.content');
+    const menuSection = document.querySelector('.menu-section');
 
     if (btnPrimary) {
         btnPrimary.addEventListener('click', function () {
-            const prenotaSection = document.getElementById('prenota');
+            const prenotaSection = document.getElementById('Prenotazioni');
             if (prenotaSection) prenotaSection.scrollIntoView({ behavior: 'smooth' });
         });
     }
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const giorno = dataSelezionata.getDay();
             if (CONFIG.giorniChiusiSempre.includes(giorno)) {
-                const nomi = ['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'];
+                const nomi = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
                 showNotification('Il ristorante è chiuso di ' + nomi[giorno] + '.', 'warning');
                 this.value = '';
                 return;
@@ -281,9 +281,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const dateStr = document.getElementById('data').value;
         const timeStr = document.getElementById('ora').value;
-        const name    = document.getElementById('nome').value.trim();
-        const phone   = document.getElementById('telefono').value.trim();
-        const people  = numPersone;
+        const name = document.getElementById('nome').value.trim();
+        const phone = document.getElementById('telefono').value.trim();
+        const people = numPersone;
 
         if (!name || !phone || !dateStr || !timeStr) {
             showNotification('Compila tutti i campi.', 'warning');
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (risposta.result === 'success') {
-                showNotification('Prenotazione confermata!\n\n' + name + ' - ' + people + ' persone\n' + dateStr + ' alle ' + timeStr, 'success', 7000);
+                showNotification('Prenotazione confermata!\n\n' + name + ' - ' + people + ' persone\n' + dateStr + ' alle ' + timeStr + '\n\nPer disdire o modificare la prenotazione, contattaci direttamente al numero: 123456789.', 'success', 7000);
 
                 CONFIG.prenotazioni.push({
                     data: dateStr,

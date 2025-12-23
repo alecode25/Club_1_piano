@@ -40,7 +40,7 @@
 </head>
 <body class="bg-background-dark text-text-primary font-display antialiased overflow-x-hidden">
 
-<a href="index.html" class="fixed bottom-6 left-6 z-[100] flex items-center justify-center w-14 h-14 bg-primary text-background-dark rounded-full shadow-[0_8px_30px_rgba(255,178,0,0.4)] active-scale">
+<a href="index.html#menu" class="fixed bottom-6 left-6 z-[100] flex items-center justify-center w-14 h-14 bg-primary text-background-dark rounded-full shadow-[0_8px_30px_rgba(255,178,0,0.4)] active-scale">
     <span class="material-symbols-outlined font-bold">home</span>
 </a>
 
@@ -64,10 +64,10 @@
     </section>
 
     <div class="sticky top-16 z-40 bg-background-dark/95 backdrop-blur-sm py-4 border-b border-white/5 overflow-x-auto no-scrollbar px-4 flex gap-2">
-        <a href="#antipasti" class="whitespace-nowrap px-4 py-2 bg-primary text-background-dark rounded-full text-[10px] font-bold uppercase">Antipasti</a>
-        <a href="#primi" class="whitespace-nowrap px-4 py-2 bg-surface-dark text-text-secondary border border-white/10 rounded-full text-[10px] font-bold uppercase">Primi</a>
-        <a href="#secondi" class="whitespace-nowrap px-4 py-2 bg-surface-dark text-text-secondary border border-white/10 rounded-full text-[10px] font-bold uppercase">Secondi</a>
-        <a href="#contorni" class="whitespace-nowrap px-4 py-2 bg-surface-dark text-text-secondary border border-white/10 rounded-full text-[10px] font-bold uppercase">Contorni</a>
+        <a href="#antipasti" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Antipasti</a>
+        <a href="#primi" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Primi</a>
+        <a href="#secondi" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Secondi</a>
+        <a href="#contorni" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Contorni</a>
     </div>
 
     <div class="max-w-[800px] mx-auto px-4 mt-8 space-y-12">
@@ -199,6 +199,59 @@
 <footer class="bg-black py-10 px-4 text-center border-t border-white/5">
     <p class="text-text-secondary text-[10px] tracking-widest uppercase">Cucina Club Primo Piano</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navButtons = document.querySelectorAll('.menu-nav-btn');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveButton() {
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                const sectionHeight = section.offsetHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            navButtons.forEach(btn => {
+                const href = btn.getAttribute('href').substring(1);
+                
+                if (href === currentSection) {
+                    btn.classList.remove('bg-surface-dark', 'text-text-secondary', 'border', 'border-white/10');
+                    btn.classList.add('bg-primary', 'text-background-dark');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-background-dark');
+                    btn.classList.add('bg-surface-dark', 'text-text-secondary', 'border', 'border-white/10');
+                }
+            });
+        }
+
+        updateActiveButton();
+        window.addEventListener('scroll', updateActiveButton);
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offset = 120;
+                    const targetPosition = targetSection.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
