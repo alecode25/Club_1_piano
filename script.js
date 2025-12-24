@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ===== URL APPS SCRIPT =====
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCwGN6GIus5mZ4-eEHyOVF-ienzfMxRPyHX80bz1CBlQODma6-FrQiaOssvsjrRWFdtA/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxmYdNsXkR_IoVYBhyVSEwBQPu8P6A57Ujbl98CB-8FCFlZmW4zTUBmK5lEHkysaixMvw/exec';
 
     // ===== Riferimenti base =====
     const btnPrimary = document.querySelector('.btn-primary');
@@ -203,8 +203,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== CONFIGURAZIONE RISTORANTE =====
     const CONFIG = {
-        giorniChiusiSempre: [1],
-        giorniChiusiSpecifici: [
+        giorniChiusiSempre: [1],//chiuso ogni lunedì (0=Dom,1=Lun,2=Mar,...6=Sab)
+        giorniChiusiSpecifici: [//chiuso in queste date specifiche(YYYY-MM-DD)
             '2025-12-24',
             '2025-12-25',
             '2025-12-26',
@@ -213,14 +213,14 @@ document.addEventListener('DOMContentLoaded', function () {
             '2026-01-06',
             '2026-08-15',
         ],
-        capienzaMax: 60,
-        prenotazioni: []
+        capienzaMax: 140,//capienza massima giornaliera
+        prenotazioni: []//prenotazioni esistenti
     };
 
     // ===== CONTATORE PERSONE =====
     let numPersone = 2;
     window.changeQty = function (delta) {
-        numPersone = Math.max(1, Math.min(10, numPersone + delta));
+        numPersone = Math.max(1, Math.min(20, numPersone + delta));
         const el = document.getElementById('numPersone');
         if (el) el.textContent = numPersone;
     };
@@ -373,3 +373,146 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+// ===== CAROUSEL AUTOMATICO DRINKS =====
+const drinkCarouselContainer = document.querySelector('.carousel-container');
+const drinkCarousel = document.querySelector('.carousel-wrapper');
+const drinkDots = document.querySelectorAll('.carousel-dots .dot');
+let currentDrinkIndex = 0;
+let drinkInterval;
+
+function updateDrinkCarousel() {
+    if (!drinkCarousel || !drinkCarouselContainer || drinkDots.length === 0) return;
+
+    const containerWidth = drinkCarouselContainer.offsetWidth;
+    const scrollAmount = containerWidth * currentDrinkIndex;
+
+    drinkCarousel.style.transform = `translateX(-${scrollAmount}px)`;
+
+    drinkDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentDrinkIndex);
+    });
+}
+
+function nextDrink() {
+    if (!drinkCarousel) return;
+    const totalCards = drinkCarousel.querySelectorAll('.drink-card').length;
+    currentDrinkIndex = (currentDrinkIndex + 1) % totalCards;
+    updateDrinkCarousel();
+}
+
+function startDrinkCarousel() {
+    drinkInterval = setInterval(nextDrink, 7000);
+}
+
+function stopDrinkCarousel() {
+    clearInterval(drinkInterval);
+}
+
+if (drinkCarousel && drinkCarouselContainer) {
+    // Imposta overflow hidden sul container
+    drinkCarouselContainer.style.overflow = 'hidden';
+    drinkCarouselContainer.style.position = 'relative';
+
+    // Imposta lo stile del carousel wrapper
+    drinkCarousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    drinkCarousel.style.display = 'flex';
+    drinkCarousel.style.width = '100%';
+
+    // Imposta ogni card per occupare l'intera larghezza del container
+    const drinkCards = drinkCarousel.querySelectorAll('.drink-card');
+    drinkCards.forEach(card => {
+        card.style.minWidth = '100%';
+        card.style.maxWidth = '100%';
+        card.style.flexShrink = '0';
+        card.style.flexGrow = '0';
+    });
+
+    startDrinkCarousel();
+
+    drinkCarouselContainer.addEventListener('mouseenter', stopDrinkCarousel);
+    drinkCarouselContainer.addEventListener('mouseleave', startDrinkCarousel);
+
+    drinkDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentDrinkIndex = index;
+            updateDrinkCarousel();
+            stopDrinkCarousel();
+            startDrinkCarousel();
+        });
+    });
+
+    // Ricalcola al resize della finestra
+    window.addEventListener('resize', updateDrinkCarousel);
+}
+
+// ===== CAROUSEL AUTOMATICO EVENTI =====
+const eventSliderContainer = document.querySelector('.event-slider');
+const eventSlider = document.querySelector('.event-slider-wrapper');
+const eventDots = document.querySelectorAll('.event-dots .event-dot');
+let currentEventIndex = 0;
+let eventInterval;
+
+function updateEventCarousel() {
+    if (!eventSlider || !eventSliderContainer || eventDots.length === 0) return;
+
+    const containerWidth = eventSliderContainer.offsetWidth;
+    const scrollAmount = containerWidth * currentEventIndex;
+
+    eventSlider.style.transform = `translateX(-${scrollAmount}px)`;
+
+    eventDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentEventIndex);
+    });
+}
+
+function nextEvent() {
+    if (!eventSlider) return;
+    const totalCards = eventSlider.querySelectorAll('.event-card').length;
+    currentEventIndex = (currentEventIndex + 1) % totalCards;
+    updateEventCarousel();
+}
+
+function startEventCarousel() {
+    eventInterval = setInterval(nextEvent, 7000);
+}
+
+function stopEventCarousel() {
+    clearInterval(eventInterval);
+}
+
+if (eventSlider && eventSliderContainer) {
+    // Imposta overflow hidden sul container
+    eventSliderContainer.style.overflow = 'hidden';
+    eventSliderContainer.style.position = 'relative';
+
+    // Imposta lo stile del carousel wrapper
+    eventSlider.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    eventSlider.style.display = 'flex';
+    eventSlider.style.width = '100%';
+
+    // Imposta ogni card per occupare l'intera larghezza del container
+    const eventCards = eventSlider.querySelectorAll('.event-card');
+    eventCards.forEach(card => {
+        card.style.minWidth = '100%';
+        card.style.maxWidth = '100%';
+        card.style.flexShrink = '0';
+        card.style.flexGrow = '0';
+    });
+
+    startEventCarousel();
+
+    eventSliderContainer.addEventListener('mouseenter', stopEventCarousel);
+    eventSliderContainer.addEventListener('mouseleave', startEventCarousel);
+
+    eventDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentEventIndex = index;
+            updateEventCarousel();
+            stopEventCarousel();
+            startEventCarousel();
+        });
+    });
+
+    // Ricalcola al resize della finestra
+    window.addEventListener('resize', updateEventCarousel);
+}
