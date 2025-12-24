@@ -516,3 +516,37 @@ if (eventSlider && eventSliderContainer) {
     // Ricalcola al resize della finestra
     window.addEventListener('resize', updateEventCarousel);
 }
+// ===== COOKIE BANNER SEMPLICE (SOLO INFORMATIVO) =====
+(function () {
+    const banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+
+    const ACCEPT_KEY = 'cookie_consent_club1piano';
+
+    const saved = localStorage.getItem(ACCEPT_KEY);
+    if (!saved) {
+        banner.style.display = 'block';
+    }
+
+    const acceptBtn = document.getElementById('cookie-accept');
+    const declineBtn = document.getElementById('cookie-decline');
+
+    function closeBanner(choice) {
+        localStorage.setItem(ACCEPT_KEY, choice);
+        banner.style.display = 'none';
+    }
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function () {
+            closeBanner('accepted');
+            // qui in futuro puoi attivare Analytics/pixel solo dopo il consenso
+        });
+    }
+
+    if (declineBtn) {
+        declineBtn.addEventListener('click', function () {
+            closeBanner('declined');
+            // qui puoi assicurarti di NON caricare eventuali script di tracciamento
+        });
+    }
+})();

@@ -354,7 +354,8 @@
         <div class="footer-social">
             <h4>Seguici</h4>
             <div class="social-links">
-                <a href="https://www.instagram.com/club_1_piano?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram">
+                <a href="https://www.instagram.com/club_1_piano?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    aria-label="Instagram">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2" />
                         <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
@@ -381,16 +382,67 @@
         <div class="footer-bottom">
             <p>&copy; 2025 Club 1 Piano. Tutti i diritti riservati.</p>
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
+                <a href="privacy.html">Privacy Policy</a>
                 <span>•</span>
-                <a href="#">Termini e Condizioni</a>
+                <a href="termini.html">Termini e Condizioni</a>
                 <span>•</span>
-                <a href="#">Cookie Policy</a>
+                <a href="coockies.html">Cookie Policy</a>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    
+    <!-- COOKIE BANNER -->
+    <div id="cookie-banner" style="
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: rgba(10,10,10,0.97);
+  color: #fff;
+  padding: 16px 20px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+  display: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px;">
+            <div style="font-size: 14px; line-height: 1.6;">
+                Utilizziamo solo cookie tecnici e, se presenti, cookie di terze parti necessari al corretto
+                funzionamento del sito.
+                Per maggiori informazioni consulta la nostra
+                <a href="coockies.html" style="color:#ffb300; text-decoration: underline;">Cookie Policy</a>.
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <button id="cookie-accept" style="
+        background: linear-gradient(135deg,#ffb300,#ff9100);
+        color:#000;
+        border:none;
+        padding:10px 18px;
+        border-radius:10px;
+        font-size:14px;
+        font-weight:700;
+        cursor:pointer;
+      ">
+                    Accetta
+                </button>
+                <button id="cookie-decline" style="
+        background: transparent;
+        color:#fff;
+        border:1px solid #555;
+        padding:10px 18px;
+        border-radius:10px;
+        font-size:14px;
+        font-weight:600;
+        cursor:pointer;
+      ">
+                    Rifiuta
+                </button>
+            </div>
+        </div>
+    </div>
+<script src="script.js"></script>
 </body>
 
 </html>
