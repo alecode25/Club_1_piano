@@ -241,7 +241,7 @@ body {
     color: #FFC700;
 }
 
-/* Drink Section */
+/* ===== DRINK SECTION ===== */
 .drink-section {
     margin-top: 40px;
 }
@@ -412,40 +412,6 @@ body {
     align-self: flex-start;
 }
 
-/* Responsive per desktop */
-@media (min-width: 768px) {
-    .carousel-container {
-        padding: 0 20px;
-    }
-
-    .carousel-wrapper {
-        gap: 20px;
-    }
-
-    .drink-image {
-        width: 160px;
-        min-width: 160px;
-    }
-
-    .drink-info {
-        gap: 10px;
-        padding: 20px 32px;
-    }
-
-    .drink-name {
-        font-size: 21px;
-    }
-
-    .drink-price {
-        font-size: 24px;
-    }
-
-    .order-btn {
-        padding: 12px 28px;
-        font-size: 16px;
-    }
-}
-
 .order-btn:hover {
     background: linear-gradient(135deg, #FFC700, #FFB700);
     transform: translateY(-2px);
@@ -498,7 +464,6 @@ body {
     font-weight: 900;
     font-style: italic;
     line-height: 1.2;
-
 }
 
 .event-slider {
@@ -602,235 +567,217 @@ body {
     background: rgba(255, 179, 0, 0.6);
 }
 
-/* Responsive per desktop */
-@media (min-width: 768px) {
-    .event-slider {
-        padding: 0 20px;
-    }
-
-    .event-slider-wrapper {
-        gap: 20px;
-    }
-
-    .event-card-inner {
-        height: 450px;
-    }
-}
-
 /* ===== RESERVATION SECTION ===== */
-/* Sezione full screen centrata */
 .reservation-section {
-  padding: 60px 16px;
-  background: #000;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    padding: 60px 16px;
+    background: #000;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Card centrale fluida */
 .reservation-container {
-  width: 100%;
-  max-width: 420px;       /* più stretto, stile mobile-first */
-  background: rgba(24, 22, 16, 0.9);
-  border-radius: 24px;
-  border: 1px solid rgba(255, 179, 0, 0.2);
-  padding: 32px 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    max-width: 420px;
+    background: rgba(24, 22, 16, 0.9);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    padding: 32px 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
 }
 
-/* Titoli */
 .reservation-header,
 .reservation-title,
 .reservation-subtitle {
-  text-align: center;
+    text-align: center;
 }
 
 .reservation-title {
-  color: #ffb300;
-  font-weight: 900;
-  font-size: 1.6rem;
-  text-transform: uppercase;
-  margin-bottom: 8px;
+    color: #ffb300;
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 .reservation-subtitle {
-  color: #9c9689;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+    color: #9c9689;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-/* Form layout */
 .booking-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
 }
 
 .form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 /* Due colonne solo su schermi più larghi */
 .two-cols {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
-@media (min-width: 480px) {
-  .reservation-container {
-    max-width: 480px;
-    padding: 36px 28px;
-  }
-
-  .two-cols {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* Label + input */
 .form-row label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #9c9689;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9c9689;
 }
 
 .form-input {
-  width: 100%;
-  background: #181610;
-  border: 1px solid #3a3427;
-  border-radius: 10px;
-  padding: 12px 14px;
-  color: #fff;
-  font-size: 0.95rem;
-  outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.1s ease;
+    width: 100%;
+    max-width: 100%;
+    background: #181610;
+    border: 1px solid #3a3427;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.1s ease;
 }
 
 .form-input::placeholder {
-  color: #666;
+    color: #666;
 }
 
 .form-input:focus {
-  border-color: #ffb300;
-  box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.22);
-  transform: translateY(-1px);
+    border-color: #ffb300;
+    box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.22);
+    transform: translateY(-1px);
 }
 
 /* Date & select */
 .form-input[type="date"] {
-  color-scheme: dark;
+    color-scheme: dark;
+    color: #fff;
+}
+
+/* Placeholder "finto" per i browser che non lo mostrano (es. iOS) */
+.form-input[type="date"]:not(:focus):invalid::before {
+    content: attr(placeholder);
+    color: #666;
+}
+
+/* rimuove l'overlay su browser che non lo supportano bene */
+.form-input[type="date"]::-webkit-datetime-edit {
+    color: inherit;
 }
 
 select.form-input {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffb300' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 32px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffb300' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
 }
 
 /* Contatore persone */
 .form-counter {
-  background: #181610;
-  border: 1px solid #3a3427;
-  border-radius: 12px;
-  padding: 12px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    background: #181610;
+    border: 1px solid #3a3427;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .counter-label {
-  color: #9c9689;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    color: #9c9689;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .counter-controls {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .counter-btn {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  border: none;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .counter-minus {
-  background: #0a0a0a;
-  color: #fff;
-  border: 1px solid #3a3427;
+    background: #0a0a0a;
+    color: #fff;
+    border: 1px solid #3a3427;
 }
 
 .counter-minus:hover {
-  background: #171717;
-  border-color: #ffb300;
+    background: #171717;
+    border-color: #ffb300;
 }
 
 .counter-plus {
-  background: #ffb300;
-  color: #000;
+    background: #ffb300;
+    color: #000;
 }
 
 .counter-plus:hover {
-  background: #ffc700;
-  transform: scale(1.05);
+    background: #ffc700;
+    transform: scale(1.05);
 }
 
 .counter-value {
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.2rem;
-  min-width: 32px;
-  text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.2rem;
+    min-width: 32px;
+    text-align: center;
 }
 
-/* Bottone submit */
 .btn-submit {
-  margin-top: 12px;
-  width: 100%;
-  background: linear-gradient(135deg, #ffb300, #ff9100);
-  color: #000;
-  border: none;
-  padding: 16px;
-  border-radius: 14px;
-  font-weight: 900;
-  font-size: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  letter-spacing: 1px;
-  box-shadow: 0 10px 22px rgba(255, 145, 0, 0.35);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+    margin-top: 12px;
+    width: 100%;
+    background: linear-gradient(135deg, #ffb300, #ff9100);
+    color: #000;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 1px;
+    box-shadow: 0 10px 22px rgba(255, 145, 0, 0.35);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .btn-submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(255, 145, 0, 0.45);
-  filter: brightness(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(255, 145, 0, 0.45);
+    filter: brightness(1.05);
 }
 
 .btn-submit:active {
-  transform: translateY(0);
-  box-shadow: 0 8px 18px rgba(255, 145, 0, 0.35);
+    transform: translateY(0);
+    box-shadow: 0 8px 18px rgba(255, 145, 0, 0.35);
 }
 
 /* ===== MAP SECTION ===== */
@@ -1135,56 +1082,80 @@ select.form-input {
         grid-template-columns: 1fr;
     }
 }
-    @media (min-width: 768px) {
-        .hero-section {
-            padding: 0;
-        }
 
-        .logo {
-            max-width: 150px;
-        }
-
-        .content {
-            padding: 0 40px 80px 40px;
-        }
-
-        .title {
-            font-size: 48px;
-        }
-
-        .description {
-            font-size: 18px;
-        }
-
-        .buttons {
-            flex-direction: row;
-            max-width: 100%;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 18px 32px;
-            font-size: 15px;
-            min-width: 250px;
-        }
-
-        .menu-section {
-            padding: 60px 40px 120px 40px;
-        }
-
-        .categories-grid {
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 60px auto;
-        }
-
-        .category-image {
-            height: 180px;
-        }
-
-        .drink-section {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+@media (min-width: 480px) {
+    .reservation-container {
+        max-width: 480px;
+        padding: 36px 28px;
     }
+
+    .two-cols {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        padding: 0;
+    }
+
+    .logo {
+        max-width: 150px;
+    }
+
+    .content {
+        padding: 0 40px 80px 40px;
+    }
+
+    .title {
+        font-size: 48px;
+    }
+
+    .description {
+        font-size: 18px;
+    }
+
+    .buttons {
+        flex-direction: row;
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 18px 32px;
+        font-size: 15px;
+        min-width: 250px;
+    }
+
+    .menu-section {
+        padding: 60px 40px 120px 40px;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto 60px auto;
+    }
+
+    .category-image {
+        height: 180px;
+    }
+
+    .drink-section {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .event-slider {
+        padding: 0 20px;
+    }
+
+    .event-slider-wrapper {
+        gap: 20px;
+    }
+
+    .event-card-inner {
+        height: 450px;
+    }
+}
