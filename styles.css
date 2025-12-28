@@ -85,7 +85,7 @@ body {
 }
 
 .highlight {
-    color: #FFD700;
+    color: #ffb300;
 }
 
 .description {
@@ -118,12 +118,12 @@ body {
 }
 
 .btn-primary {
-    background-color: #FFD700;
+    background-color: #ffb300;
     color: #000;
 }
 
 .btn-primary:hover {
-    background-color: #FFC700;
+    background-color: #ffb300;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
 }
@@ -147,7 +147,7 @@ body {
 }
 
 .menu-link:hover {
-    color: #FFD700;
+    color: #ffb300;
 }
 
 /* ===== MENU SECTION ===== */
@@ -227,7 +227,7 @@ body {
 .category-btn {
     background: none;
     border: none;
-    color: #FFD700;
+    color: #ffb300;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
@@ -238,7 +238,7 @@ body {
 }
 
 .category-btn:hover {
-    color: #FFC700;
+    color: #ffb300;
 }
 
 /* ===== DRINK SECTION ===== */
@@ -262,7 +262,7 @@ body {
 }
 
 .view-all {
-    color: #FFD700;
+    color: #ffb300;
     font-size: 14px;
     text-decoration: none;
     font-weight: 600;
@@ -270,7 +270,7 @@ body {
 }
 
 .view-all:hover {
-    color: #FFC700;
+    color: #ffb300;
 }
 
 .featured-drink {
@@ -285,7 +285,7 @@ body {
 }
 
 .popular-badge {
-    background-color: #FFD700;
+    background-color: #ffb300;
     color: #000;
     font-size: 11px;
     font-weight: 700;
@@ -388,7 +388,7 @@ body {
 }
 
 .drink-price {
-    color: #FFD700;
+    color: #ffb300;
     font-size: 22px;
     font-weight: 800;
     margin: 0;
@@ -396,7 +396,7 @@ body {
 }
 
 .order-btn {
-    background: linear-gradient(135deg, #FFD700, #FFC700);
+    background: linear-gradient(135deg, #ffb300, #ffb300);
     color: #000;
     border: none;
     padding: 10px 20px;
@@ -413,7 +413,7 @@ body {
 }
 
 .order-btn:hover {
-    background: linear-gradient(135deg, #FFC700, #FFB700);
+    background: linear-gradient(135deg, #ffb300, #ffb300);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
@@ -440,7 +440,7 @@ body {
 }
 
 .dot.active {
-    background: #FFD700;
+    background: #ffb300;
     width: 30px;
     border-radius: 5px;
 }
@@ -1148,14 +1148,25 @@ select.form-input {
     }
 
     .event-slider {
-        padding: 0 20px;
+        padding: 0;
+        max-width: 700px;
+        margin: 0 auto;
     }
 
     .event-slider-wrapper {
-        gap: 20px;
+        gap: 0;
     }
 
     .event-card-inner {
         height: 450px;
+    }
+
+    .map-container {
+        max-width: 900px;
+        margin: 20px auto;
+    }
+
+    .map-wrapper {
+        height: 350px;
     }
 }
