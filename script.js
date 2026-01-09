@@ -89,24 +89,12 @@ document.addEventListener('DOMContentLoaded', function () {
             style.id = 'notification-styles';
             style.textContent = `
                 @keyframes slideIn {
-                    from {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
-                    to {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
+                    from { transform: translateX(400px); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
                 }
                 @keyframes slideOut {
-                    from {
-                        transform: translateX(0);
-                        opacity: 1;
-                    }
-                    to {
-                        transform: translateX(400px);
-                        opacity: 0;
-                    }
+                    from { transform: translateX(0); opacity: 1; }
+                    to { transform: translateX(400px); opacity: 0; }
                 }
                 @media (max-width: 640px) {
                     #notification-container {
@@ -137,7 +125,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         notification.addEventListener('click', closeNotification);
-
         container.appendChild(notification);
 
         if (duration > 0) {
@@ -203,18 +190,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== CONFIGURAZIONE RISTORANTE =====
     const CONFIG = {
-        giorniChiusiSempre: [1],//chiuso ogni lunedì (0=Dom,1=Lun,2=Mar,...6=Sab)
-        giorniChiusiSpecifici: [//chiuso in queste date specifiche(YYYY-MM-DD)
-            '2025-12-24',
-            '2025-12-25',
-            '2025-12-26',
-            '2025-12-31',
-            '2026-01-01',
-            '2026-01-06',
-            '2026-08-15',
+        giorniChiusiSempre: [1],
+        giorniChiusiSpecifici: [
+            '2025-12-24', '2025-12-25', '2025-12-26', '2025-12-31',
+            '2026-01-01', '2026-01-06', '2026-08-15'
         ],
-        capienzaMax: 140,//capienza massima giornaliera
-        prenotazioni: []//prenotazioni esistenti
+        capienzaMax: 140,
+        prenotazioni: []
     };
 
     // ===== CONTATORE PERSONE =====
@@ -265,311 +247,159 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-<<<<<<< HEAD
-});
 
-document.getElementById('cvForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // ===== SUBMIT CV =====
+    const cvForm = document.getElementById('cvForm');
+    if (cvForm) {
+        cvForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            const fileInput = document.getElementById('curriculum');
+            const file = fileInput.files[0];
 
-    const nome = document.getElementById('nome').value;
-    const fileInput = document.getElementById('curriculum');
-    const file = fileInput.files[0];
-
-    if (file) {
-        // Qui andrebbe la logica per inviare l'email tramite un servizio come EmailJS o il tuo server
-        console.log("File caricato:", file.name);
-        
-        alert("Grazie " + nome + "! Il tuo curriculum è stato inviato correttamente. Ti contatteremo presto.");
-        
-        // Resetta il form
-        this.reset();
-    } else {
-        alert("Per favore, carica il tuo curriculum in formato PDF o Foto.");
+            if (file) {
+                console.log("File caricato:", file.name);
+                alert("Grazie " + nome + "! Il tuo curriculum è stato inviato correttamente. Ti contatteremo presto.");
+                this.reset();
+            } else {
+                alert("Per favore, carica il tuo curriculum in formato PDF o Foto.");
+            }
+        });
     }
-=======
 
-    // ===== SUBMIT FORM =====
+    // ===== SUBMIT BOOKING FORM =====
     const bookingForm = document.getElementById('bookingForm');
-    if (!bookingForm) return;
-
-    bookingForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const submitBtn = document.querySelector('.btn-submit');
-        if (submitBtn) {
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Invio...';
-        }
-
-        const dateStr = document.getElementById('data').value;
-        const timeStr = document.getElementById('ora').value;
-        const name = document.getElementById('nome').value.trim();
-        const phone = document.getElementById('telefono').value.trim();
-        const people = numPersone;
-
-        if (!name || !phone || !dateStr || !timeStr) {
-            showNotification('Compila tutti i campi.', 'warning');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const submitBtn = document.querySelector('.btn-submit');
             if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Conferma Prenotazione';
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Invio...';
             }
-            return;
-        }
 
-        const dup = CONFIG.prenotazioni.find(p => p.telefono === phone && p.data === dateStr);
-        if (dup) {
-            showNotification('Hai già una prenotazione il ' + dateStr + ' con questo numero.', 'warning');
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Conferma Prenotazione';
+            const dateStr = document.getElementById('data').value;
+            const timeStr = document.getElementById('ora').value;
+            const name = document.getElementById('nome').value.trim();
+            const phone = document.getElementById('telefono').value.trim();
+            const people = numPersone;
+
+            if (!name || !phone || !dateStr || !timeStr) {
+                showNotification('Compila tutti i campi.', 'warning');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Conferma Prenotazione';
+                }
+                return;
             }
-            return;
-        }
 
-        const formData = new URLSearchParams();
-        formData.append('data', dateStr);
-        formData.append('ora', timeStr);
-        formData.append('nome', name);
-        formData.append('telefono', phone);
-        formData.append('persone', String(people));
+            const formData = new URLSearchParams();
+            formData.append('data', dateStr);
+            formData.append('ora', timeStr);
+            formData.append('nome', name);
+            formData.append('telefono', phone);
+            formData.append('persone', String(people));
 
-        try {
-            console.log('📤 Invio dati:', {
-                data: dateStr,
-                ora: timeStr,
-                nome: name,
-                telefono: phone,
-                persone: people
-            });
-
-            const res = await fetch(SCRIPT_URL, {
-                method: 'POST',
-                body: formData
-            });
-
-            console.log('📥 Status:', res.status, res.statusText);
-
-            const text = await res.text();
-            console.log('📄 Risposta completa:', text);
-
-            let risposta;
             try {
-                risposta = JSON.parse(text);
-                console.log('✓ JSON parsed:', risposta);
-            } catch (e) {
-                console.warn('⚠️ Risposta non è JSON:', text);
-                if (text.includes('success')) {
-                    risposta = { result: 'success' };
+                const res = await fetch(SCRIPT_URL, { method: 'POST', body: formData });
+                const text = await res.text();
+                let risposta;
+                try { risposta = JSON.parse(text); } catch (e) { risposta = text.includes('success') ? { result: 'success' } : { result: 'error' }; }
+
+                if (risposta.result === 'success') {
+                    showNotification('Prenotazione confermata!', 'success', 7000);
+                    CONFIG.prenotazioni.push({ data: dateStr, ora: timeStr, nome: name, telefono: phone, persone: people });
+                    bookingForm.reset();
+                    document.getElementById('numPersone').textContent = '2';
+                    numPersone = 2;
                 } else {
-                    risposta = { result: 'error', message: text };
+                    showNotification('Errore durante il salvataggio.', 'error');
+                }
+            } catch (err) {
+                showNotification('Errore di connessione.', 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Conferma Prenotazione';
                 }
             }
-
-            if (risposta.result === 'success') {
-                showNotification('Prenotazione confermata!\n\n' + name + ' - ' + people + ' persone\n' + dateStr + ' alle ' + timeStr + '\n\nPer disdire o modificare la prenotazione, contattaci direttamente al numero: 123456789.', 'success', 7000);
-
-                CONFIG.prenotazioni.push({
-                    data: dateStr,
-                    ora: timeStr,
-                    nome: name,
-                    telefono: phone,
-                    persone: people
-                });
-
-                bookingForm.reset();
-                const el = document.getElementById('numPersone');
-                numPersone = 2;
-                if (el) el.textContent = '2';
-            } else {
-                showNotification('Errore durante il salvataggio. Riprova.', 'error');
-            }
-
-        } catch (err) {
-            console.error('Fetch error:', err);
-            showNotification('Errore di connessione: ' + err.message, 'error');
-        } finally {
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Conferma Prenotazione';
-            }
-        }
-    });
->>>>>>> 83feccd63ffae71c011bfd2a191388bb3d159c13
-});
-// ===== CAROUSEL AUTOMATICO DRINKS =====
-const drinkCarouselContainer = document.querySelector('.carousel-container');
-const drinkCarousel = document.querySelector('.carousel-wrapper');
-const drinkDots = document.querySelectorAll('.carousel-dots .dot');
-let currentDrinkIndex = 0;
-let drinkInterval;
-
-function updateDrinkCarousel() {
-    if (!drinkCarousel || !drinkCarouselContainer || drinkDots.length === 0) return;
-
-    const containerWidth = drinkCarouselContainer.offsetWidth;
-    const scrollAmount = containerWidth * currentDrinkIndex;
-
-    drinkCarousel.style.transform = `translateX(-${scrollAmount}px)`;
-
-    drinkDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentDrinkIndex);
-    });
-}
-
-function nextDrink() {
-    if (!drinkCarousel) return;
-    const totalCards = drinkCarousel.querySelectorAll('.drink-card').length;
-    currentDrinkIndex = (currentDrinkIndex + 1) % totalCards;
-    updateDrinkCarousel();
-}
-
-function startDrinkCarousel() {
-    drinkInterval = setInterval(nextDrink, 7000);
-}
-
-function stopDrinkCarousel() {
-    clearInterval(drinkInterval);
-}
-
-if (drinkCarousel && drinkCarouselContainer) {
-    // Imposta overflow hidden sul container
-    drinkCarouselContainer.style.overflow = 'hidden';
-    drinkCarouselContainer.style.position = 'relative';
-
-    // Imposta lo stile del carousel wrapper
-    drinkCarousel.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    drinkCarousel.style.display = 'flex';
-    drinkCarousel.style.width = '100%';
-
-    // Imposta ogni card per occupare l'intera larghezza del container
-    const drinkCards = drinkCarousel.querySelectorAll('.drink-card');
-    drinkCards.forEach(card => {
-        card.style.minWidth = '100%';
-        card.style.maxWidth = '100%';
-        card.style.flexShrink = '0';
-        card.style.flexGrow = '0';
-    });
-
-    startDrinkCarousel();
-
-    drinkCarouselContainer.addEventListener('mouseenter', stopDrinkCarousel);
-    drinkCarouselContainer.addEventListener('mouseleave', startDrinkCarousel);
-
-    drinkDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentDrinkIndex = index;
-            updateDrinkCarousel();
-            stopDrinkCarousel();
-            startDrinkCarousel();
         });
-    });
+    }
+});
 
-    // Ricalcola al resize della finestra
+// ===== CAROUSEL AUTOMATICO DRINKS =====
+function setupDrinkCarousel() {
+    const drinkCarouselContainer = document.querySelector('.carousel-container');
+    const drinkCarousel = document.querySelector('.carousel-wrapper');
+    const drinkDots = document.querySelectorAll('.carousel-dots .dot');
+    if (!drinkCarousel || !drinkCarouselContainer) return;
+
+    let currentDrinkIndex = 0;
+    let drinkInterval;
+
+    function updateDrinkCarousel() {
+        const containerWidth = drinkCarouselContainer.offsetWidth;
+        drinkCarousel.style.transform = `translateX(-${containerWidth * currentDrinkIndex}px)`;
+        drinkDots.forEach((dot, index) => dot.classList.toggle('active', index === currentDrinkIndex));
+    }
+
+    function nextDrink() {
+        const totalCards = drinkCarousel.querySelectorAll('.drink-card').length;
+        currentDrinkIndex = (currentDrinkIndex + 1) % totalCards;
+        updateDrinkCarousel();
+    }
+
+    drinkInterval = setInterval(nextDrink, 7000);
+    drinkDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => { currentDrinkIndex = index; updateDrinkCarousel(); });
+    });
     window.addEventListener('resize', updateDrinkCarousel);
 }
+setupDrinkCarousel();
 
 // ===== CAROUSEL AUTOMATICO EVENTI =====
-const eventSliderContainer = document.querySelector('.event-slider');
-const eventSlider = document.querySelector('.event-slider-wrapper');
-const eventDots = document.querySelectorAll('.event-dots .event-dot');
-let currentEventIndex = 0;
-let eventInterval;
+function setupEventCarousel() {
+    const eventSliderContainer = document.querySelector('.event-slider');
+    const eventSlider = document.querySelector('.event-slider-wrapper');
+    const eventDots = document.querySelectorAll('.event-dots .event-dot');
+    if (!eventSlider || !eventSliderContainer) return;
 
-function updateEventCarousel() {
-    if (!eventSlider || !eventSliderContainer || eventDots.length === 0) return;
+    let currentEventIndex = 0;
+    let eventInterval;
 
-    const containerWidth = eventSliderContainer.offsetWidth;
-    const scrollAmount = containerWidth * currentEventIndex;
+    function updateEventCarousel() {
+        const containerWidth = eventSliderContainer.offsetWidth;
+        eventSlider.style.transform = `translateX(-${containerWidth * currentEventIndex}px)`;
+        eventDots.forEach((dot, index) => dot.classList.toggle('active', index === currentEventIndex));
+    }
 
-    eventSlider.style.transform = `translateX(-${scrollAmount}px)`;
+    function nextEvent() {
+        const totalCards = eventSlider.querySelectorAll('.event-card').length;
+        currentEventIndex = (currentEventIndex + 1) % totalCards;
+        updateEventCarousel();
+    }
 
-    eventDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentEventIndex);
-    });
-}
-
-function nextEvent() {
-    if (!eventSlider) return;
-    const totalCards = eventSlider.querySelectorAll('.event-card').length;
-    currentEventIndex = (currentEventIndex + 1) % totalCards;
-    updateEventCarousel();
-}
-
-function startEventCarousel() {
     eventInterval = setInterval(nextEvent, 7000);
-}
-
-function stopEventCarousel() {
-    clearInterval(eventInterval);
-}
-
-if (eventSlider && eventSliderContainer) {
-    // Imposta overflow hidden sul container
-    eventSliderContainer.style.overflow = 'hidden';
-    eventSliderContainer.style.position = 'relative';
-
-    // Imposta lo stile del carousel wrapper
-    eventSlider.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-    eventSlider.style.display = 'flex';
-    eventSlider.style.width = '100%';
-
-    // Imposta ogni card per occupare l'intera larghezza del container
-    const eventCards = eventSlider.querySelectorAll('.event-card');
-    eventCards.forEach(card => {
-        card.style.minWidth = '100%';
-        card.style.maxWidth = '100%';
-        card.style.flexShrink = '0';
-        card.style.flexGrow = '0';
-    });
-
-    startEventCarousel();
-
-    eventSliderContainer.addEventListener('mouseenter', stopEventCarousel);
-    eventSliderContainer.addEventListener('mouseleave', startEventCarousel);
-
     eventDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentEventIndex = index;
-            updateEventCarousel();
-            stopEventCarousel();
-            startEventCarousel();
-        });
+        dot.addEventListener('click', () => { currentEventIndex = index; updateEventCarousel(); });
     });
-
-    // Ricalcola al resize della finestra
     window.addEventListener('resize', updateEventCarousel);
 }
-// ===== COOKIE BANNER SEMPLICE (SOLO INFORMATIVO) =====
+setupEventCarousel();
+
+// ===== COOKIE BANNER =====
 (function () {
     const banner = document.getElementById('cookie-banner');
     if (!banner) return;
-
     const ACCEPT_KEY = 'cookie_consent_club1piano';
+    if (!localStorage.getItem(ACCEPT_KEY)) banner.style.display = 'block';
 
-    const saved = localStorage.getItem(ACCEPT_KEY);
-    if (!saved) {
-        banner.style.display = 'block';
-    }
-
-    const acceptBtn = document.getElementById('cookie-accept');
-    const declineBtn = document.getElementById('cookie-decline');
-
-    function closeBanner(choice) {
-        localStorage.setItem(ACCEPT_KEY, choice);
+    document.getElementById('cookie-accept')?.addEventListener('click', () => {
+        localStorage.setItem(ACCEPT_KEY, 'accepted');
         banner.style.display = 'none';
-    }
-
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', function () {
-            closeBanner('accepted');
-            // qui in futuro puoi attivare Analytics/pixel solo dopo il consenso
-        });
-    }
-
-    if (declineBtn) {
-        declineBtn.addEventListener('click', function () {
-            closeBanner('declined');
-            // qui puoi assicurarti di NON caricare eventuali script di tracciamento
-        });
-    }
+    });
+    document.getElementById('cookie-decline')?.addEventListener('click', () => {
+        localStorage.setItem(ACCEPT_KEY, 'declined');
+        banner.style.display = 'none';
+    });
 })();
