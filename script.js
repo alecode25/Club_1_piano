@@ -192,8 +192,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const CONFIG = {
         giorniChiusiSempre: [1],
         giorniChiusiSpecifici: [
-            '2025-12-24', '2025-12-25', '2025-12-26', '2025-12-31',
-            '2026-01-01', '2026-01-06', '2026-08-15'
+            // Formato 'YYYY-MM-DD' esempio:
+            //'2024-08-15',
+            //'2024-11-01'
+            //'2024-12-25',
+            //'2024-12-31'
         ],
         capienzaMax: 140,
         prenotazioni: []
@@ -248,24 +251,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ===== SUBMIT CV =====
-    const cvForm = document.getElementById('cvForm');
-    if (cvForm) {
-        cvForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nome = document.getElementById('nome').value;
-            const fileInput = document.getElementById('curriculum');
-            const file = fileInput.files[0];
-
-            if (file) {
-                console.log("File caricato:", file.name);
-                alert("Grazie " + nome + "! Il tuo curriculum è stato inviato correttamente. Ti contatteremo presto.");
-                this.reset();
-            } else {
-                alert("Per favore, carica il tuo curriculum in formato PDF o Foto.");
-            }
-        });
-    }
 
     // ===== SUBMIT BOOKING FORM =====
     const bookingForm = document.getElementById('bookingForm');
@@ -307,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 try { risposta = JSON.parse(text); } catch (e) { risposta = text.includes('success') ? { result: 'success' } : { result: 'error' }; }
 
                 if (risposta.result === 'success') {
-                    showNotification('Prenotazione confermata!', 'success', 7000);
+                    showNotification('Prenotazione confermata!\n per disdire la prenotazione contattare il numero: 0541 1890589', 'success', 7000);
                     CONFIG.prenotazioni.push({ data: dateStr, ora: timeStr, nome: name, telefono: phone, persone: people });
                     bookingForm.reset();
                     document.getElementById('numPersone').textContent = '2';
