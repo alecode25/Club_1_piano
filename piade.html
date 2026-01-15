@@ -5,6 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
     <title>Menu Piadine - Club Primo Piano</title>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;900&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -31,9 +32,11 @@
     </script>
     <style>
         body { -webkit-tap-highlight-color: transparent; }
-        .piada-card { transition: all 0.2s ease; }
-        .piada-card:active { transform: scale(0.97); background-color: #1f1f1f; }
-        .active-scale:active { transform: scale(0.9); transition: transform 0.1s; }
+        .burger-card { transition: transform 0.2s; }
+        .burger-card:active { transform: scale(0.98); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .active-scale:active { transform: scale(0.95); transition: transform 0.1s; }
     </style>
 </head>
 <body class="bg-background-dark text-text-primary font-display antialiased overflow-x-hidden">
@@ -50,97 +53,212 @@
             </div>
             <span class="text-white font-bold text-sm uppercase tracking-tight">Club Primo Piano</span>
         </div>
-        <span class="text-primary text-[10px] font-bold px-2 py-1 border border-primary/20 rounded">PIADINERIA</span>
+        <span class="text-primary text-[10px] font-bold border border-primary/30 px-2 py-1 rounded">PIADINERIA</span>
     </div>
 </header>
 
 <main class="pt-16 pb-24">
     <section class="px-4 py-10 text-center bg-gradient-to-b from-primary/10 to-transparent">
-      <span class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Porta Galliana • Rimini</span>
-        <h1 class="text-4xl font-black text-white mb-4">LE NOSTRE <span class="text-primary">PIANDE</span></h1>
+        <span class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Porta Galliana • Rimini</span>
+        <h1 class="text-4xl font-black text-white mb-4">LE NOSTRE <span class="text-primary">PIADE</span></h1>
         <div class="h-1 w-12 bg-primary mx-auto"></div>
     </section>
 
-    <div class="max-w-[800px] mx-auto px-4 space-y-4">
-        
-        <div class="bg-surface-dark/40 border border-white/5 rounded-2xl p-4 flex justify-between items-center mb-6">
-            <span class="text-text-secondary font-bold uppercase text-sm tracking-widest">Piadina Vuota</span>
-            <span class="text-white font-black">€1,50</span>
-        </div>
+    <!-- Menu navigation con stato attivo -->
+    <div class="sticky top-16 z-40 bg-background-dark/95 backdrop-blur-sm py-4 border-b border-white/5 overflow-x-auto no-scrollbar px-4 flex gap-2">
+        <a href="#piadine" class="menu-nav-btn whitespace-nowrap px-5 py-2 rounded-full text-[11px] font-bold uppercase transition-all">Piadine</a>
+        <a href="#insalate" class="menu-nav-btn whitespace-nowrap px-5 py-2 rounded-full text-[11px] font-bold uppercase transition-all">Insalate</a>
+    </div>
 
-        <div class="grid grid-cols-1 gap-3">
-            
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-primary/30 shadow-lg">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Romagna</h3>
-                    <span class="text-primary font-black">€9,50</span>
+    <div class="max-w-[1200px] mx-auto px-4 mt-8 space-y-12">
+
+        <section id="piadine" class="space-y-6">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> PIADINE
+            </h2>
+
+            <div class="burger-card bg-surface-dark/40 border border-white/5 rounded-2xl p-5 mb-4">
+                <div class="flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-text-secondary uppercase tracking-tight">Piadina Vuota</h3>
+                    <span class="text-white font-black">€1,50</span>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Prosciutto crudo 24 mesi, squacquerone, rucola.</p>
             </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-primary/30">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight text-primary">Gourmet</h3>
-                    <span class="text-primary font-black">€10,50</span>
+            <div class="grid grid-cols-1 gap-4">
+                
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-primary/40">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Romagna</h3>
+                        <span class="text-primary font-black">€9,50</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Prosciutto crudo 24 mesi, squacquerone, rucola.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Prosciutto crudo 24 mesi, squacquerone, fichi caramellati.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Fritta</h3>
-                    <span class="text-primary font-black">€12,00</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-primary/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary text-background-dark px-3 py-1 text-[10px] font-black uppercase">Gourmet</div>
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Gourmet</h3>
+                        <span class="text-primary font-black">€10,50</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Prosciutto crudo 24 mesi, squacquerone, fichi caramellati.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Cotoletta, lattuga, salsa.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Sapore di Mare</h3>
-                    <span class="text-primary font-black">€10,00</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Fritta</h3>
+                        <span class="text-primary font-black">€12,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Cotoletta, lattuga, salsa.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Tonno, pomodoro fresco, lattuga.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Saporita</h3>
-                    <span class="text-primary font-black">€9,00</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Sapore di Mare</h3>
+                        <span class="text-primary font-black">€10,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Tonno, pomodoro fresco, lattuga.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Salsiccia, cipolla caramellata.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Patacca</h3>
-                    <span class="text-primary font-black">€8,50</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Saporita</h3>
+                        <span class="text-primary font-black">€9,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Salsiccia, cipolla caramellata.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Prosciutto cotto, mozzarella.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-green-500 uppercase tracking-tight text-opacity-80">Vegetariana</h3>
-                    <span class="text-primary font-black">€8,00</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Patacca</h3>
+                        <span class="text-primary font-black">€8,50</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Prosciutto cotto, mozzarella.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Piada all'olio, mozzarella, pomodoro, lattuga.</p>
-            </div>
 
-            <div class="piada-card bg-surface-dark rounded-2xl p-5 border border-white/5">
-                <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg text-white uppercase tracking-tight">Semplice</h3>
-                    <span class="text-primary font-black">€8,00</span>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-green-500 uppercase tracking-tight text-opacity-80">Vegetariana</h3>
+                        <span class="text-primary font-black">€8,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Piada all'olio, mozzarella, pomodoro, lattuga.</p>
                 </div>
-                <p class="text-text-secondary text-sm leading-snug">Squacquerone, rucola.</p>
-            </div>
 
-        </div>
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Semplice</h3>
+                        <span class="text-primary font-black">€8,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Squacquerone, rucola.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="insalate" class="space-y-6 pb-12">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> INSALATE
+            </h2>
+
+            <div class="grid grid-cols-1 gap-4">
+                
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Cesar Salad</h3>
+                        <span class="text-primary font-black">€11,50</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Insalata iceberg, crostini, pomodorini, straccetti di pollo, salsa caesar.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-green-500 uppercase tracking-tight text-opacity-80">La Vegana</h3>
+                        <span class="text-primary font-black">€9,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Insalata iceberg, radicchio, pomodorini, carote.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Sapore di Mare</h3>
+                        <span class="text-primary font-black">€12,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Insalata iceberg, tonno, pomodorini, carote.</p>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 </main>
 
-<footer class="bg-black py-12 px-6 text-center border-t border-white/5">
-    <p class="text-text-secondary text-xs uppercase tracking-[0.2em]">Club Primo Piano • Porta Galliana</p>
+<footer class="bg-black border-t border-white/5 py-10 px-4 text-center">
+    <p class="text-text-secondary text-[10px] uppercase tracking-widest mb-2">Club Primo Piano • Porta Galliana</p>
 </footer>
+
+<script>
+    // Sistema di navigazione con bottoni attivi
+    document.addEventListener('DOMContentLoaded', function () {
+        const navButtons = document.querySelectorAll('.menu-nav-btn');
+        const sections = document.querySelectorAll('section[id]');
+
+        // Funzione per aggiornare lo stato attivo
+        function updateActiveButton() {
+            let currentSection = '';
+            const scrollPosition = window.scrollY + 250;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            // Se siamo vicini alla fine della pagina, attiva l'ultima sezione
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+                currentSection = sections[sections.length - 1].getAttribute('id');
+            }
+
+            navButtons.forEach(btn => {
+                const href = btn.getAttribute('href').substring(1);
+
+                if (href === currentSection) {
+                    btn.classList.remove('bg-surface-dark', 'text-text-secondary', 'border', 'border-white/10');
+                    btn.classList.add('bg-primary', 'text-background-dark');
+                } else {
+                    btn.classList.remove('bg-primary', 'text-background-dark');
+                    btn.classList.add('bg-surface-dark', 'text-text-secondary', 'border', 'border-white/10');
+                }
+            });
+        }
+
+        // Aggiorna al caricamento
+        updateActiveButton();
+
+        // Aggiorna durante lo scroll
+        window.addEventListener('scroll', updateActiveButton);
+
+        // Smooth scroll quando si clicca sui bottoni
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    const offset = 120; // Offset per header fisso
+                    const targetPosition = targetSection.offsetTop - offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

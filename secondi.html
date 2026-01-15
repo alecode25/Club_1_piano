@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-    <title>Menu Cucina - Club Primo Piano</title>
+    <title>Menu Secondi e Contorni - Club Primo Piano</title>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,8 +32,8 @@
     </script>
     <style>
         body { -webkit-tap-highlight-color: transparent; }
-        .dish-card { transition: all 0.2s ease; }
-        .dish-card:active { transform: scale(0.98); background-color: #1f1f1f; }
+        .burger-card { transition: transform 0.2s; }
+        .burger-card:active { transform: scale(0.98); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .active-scale:active { transform: scale(0.95); transition: transform 0.1s; }
@@ -53,83 +53,97 @@
             </div>
             <span class="text-white font-bold text-sm uppercase tracking-tight">Club Primo Piano</span>
         </div>
-        <span class="text-primary text-[10px] font-bold border border-primary/30 px-2 py-1 rounded">CUCINA</span>
+        <span class="text-primary text-[10px] font-bold border border-primary/30 px-2 py-1 rounded">FOOD MENU</span>
     </div>
 </header>
 
 <main class="pt-16 pb-24">
     <section class="px-4 py-10 text-center bg-gradient-to-b from-primary/10 to-transparent">
-      <span class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Porta Galliana • Rimini</span>
-        <h1 class="text-4xl font-black text-white mb-4">I NOSTRI <span class="text-primary">PRIMI</span></h1>
+        <span class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-2 block">Porta Galliana • Rimini</span>
+        <h1 class="text-4xl font-black text-white mb-4">SECONDI <span class="text-primary">PIATTI</span></h1>
         <div class="h-1 w-12 bg-primary mx-auto"></div>
     </section>
 
+    <!-- Menu navigation con stato attivo -->
     <div class="sticky top-16 z-40 bg-background-dark/95 backdrop-blur-sm py-4 border-b border-white/5 overflow-x-auto no-scrollbar px-4 flex gap-2">
-        <a href="#antipasti" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Antipasti</a>
-        <a href="#primi" class="menu-nav-btn whitespace-nowrap px-4 py-2 rounded-full text-[10px] font-bold uppercase transition-all">Primi</a>
+        <a href="#secondi" class="menu-nav-btn whitespace-nowrap px-5 py-2 rounded-full text-[11px] font-bold uppercase transition-all">Secondi</a>
+        <a href="#contorni" class="menu-nav-btn whitespace-nowrap px-5 py-2 rounded-full text-[11px] font-bold uppercase transition-all">Contorni</a>
     </div>
 
-    <div class="max-w-[800px] mx-auto px-4 mt-8 space-y-12">
-        
-        <section id="antipasti" class="space-y-4">
-            <h2 class="text-xl font-black text-white flex items-center gap-2 uppercase tracking-widest">
-                <span class="text-primary">/</span> Antipasti
+    <div class="max-w-[1200px] mx-auto px-4 mt-8 space-y-12">
+
+        <section id="secondi" class="space-y-6">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> SECONDI PIATTI
             </h2>
-            <div class="grid grid-cols-1 gap-3">
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-primary/20">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Gran Tagliere della Porta</h3>
-                        <span class="text-primary font-black text-sm">€18,00</span>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Filetto Bianco</h3>
+                        <span class="text-primary font-black">€12,00</span>
                     </div>
-                    <p class="text-text-secondary text-xs mt-1">Formaggi, salumi, marmellate miste.</p>
+                    <p class="text-text-secondary text-sm leading-snug">Petto di pollo cotto sulla griglia, con verdure di stagione.</p>
                 </div>
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Fresco di Romagna</h3>
-                        <span class="text-primary font-black text-sm">€13,50</span>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Cotoletta con Patatine</h3>
+                        <span class="text-primary font-black">€12,50</span>
                     </div>
-                    <p class="text-text-secondary text-xs mt-1">Bresaola, rucola, grana.</p>
+                    <p class="text-text-secondary text-sm leading-snug">Dorata e croccante con contorno di patate fritte.</p>
                 </div>
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Caprese di Bufala</h3>
-                        <span class="text-primary font-black text-sm">€12,00</span>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Tagliata di Manzo</h3>
+                        <span class="text-primary font-black">€23,00</span>
                     </div>
-                    <p class="text-text-secondary text-xs mt-1">Bufala, pomodoro fresco, basilico.</p>
+                    <p class="text-text-secondary text-sm leading-snug">Con sale dolce di Cervia, grana e rucola.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-primary/40">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Filetto di Angus</h3>
+                        <span class="text-primary font-black">€25,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Taglio pregiato cotto alla griglia.</p>
+                </div>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Filetti di Pollo Fritti</h3>
+                        <span class="text-primary font-black">€6,00</span>
+                    </div>
+                    <p class="text-text-secondary text-sm leading-snug">Fileti di pollo dorati e croccanti, salsa a scelta.</p>
                 </div>
             </div>
         </section>
 
-        <section id="primi" class="space-y-4 pb-12">
-            <h2 class="text-xl font-black text-white flex items-center gap-2 uppercase tracking-widest">
-                <span class="text-primary">/</span> Primi Piatti
+        <section id="contorni" class="space-y-6 pb-12">
+            <h2 class="text-2xl font-black text-white flex items-center gap-2 italic">
+                <span class="text-primary">/</span> CONTORNI
             </h2>
-            <div class="grid grid-cols-1 gap-3">
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Pasta al Pomodoro</h3>
-                        <span class="text-primary font-black text-sm">€9,00</span>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Patate Fritte</h3>
+                        <span class="text-primary font-black">€5,00</span>
                     </div>
-                    <p class="text-text-secondary text-xs mt-1">Penne al pomodoro o all'arrabbiata.</p>
                 </div>
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Tagliatelle al Ragù</h3>
-                        <span class="text-primary font-black text-sm">€11,50</span>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Patate al Forno</h3>
+                        <span class="text-primary font-black">€5,50</span>
                     </div>
-                    <p class="text-text-secondary text-xs mt-1">Ragù tradizionale di carni miste.</p>
                 </div>
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Carbonara</h3>
-                        <span class="text-primary font-black text-sm">€12,50</span>
-                    </div>
-                    <p class="text-text-secondary text-xs mt-1">Mezze maniche, uovo, guanciale, pecorino.</p>
-                </div>
-                <div class="dish-card bg-surface-dark p-4 rounded-2xl border border-white/5">
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-white uppercase text-sm">Tortellini Pasticciai</h3>
-                        <span class="text-primary font-black text-sm">€13,50</span>
+
+                <div class="burger-card bg-surface-dark rounded-2xl p-5 border border-white/5">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-lg text-white uppercase tracking-tight">Verdure alla Griglia</h3>
+                        <span class="text-primary font-black">€6,00</span>
                     </div>
                 </div>
             </div>
@@ -138,15 +152,17 @@
     </div>
 </main>
 
-<footer class="bg-black py-10 px-4 text-center border-t border-white/5">
-    <p class="text-text-secondary text-[10px] tracking-widest uppercase">Club Primo Piano • Porta Galliana</p>
+<footer class="bg-black border-t border-white/5 py-10 px-4 text-center">
+    <p class="text-text-secondary text-[10px] uppercase tracking-widest mb-2">Club Primo Piano • Porta Galliana</p>
 </footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    // Sistema di navigazione con bottoni attivi
+    document.addEventListener('DOMContentLoaded', function () {
         const navButtons = document.querySelectorAll('.menu-nav-btn');
         const sections = document.querySelectorAll('section[id]');
 
+        // Funzione per aggiornare lo stato attivo
         function updateActiveButton() {
             let currentSection = '';
             const scrollPosition = window.scrollY + 250;
@@ -154,7 +170,7 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
-                
+
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     currentSection = section.getAttribute('id');
                 }
@@ -167,7 +183,7 @@
 
             navButtons.forEach(btn => {
                 const href = btn.getAttribute('href').substring(1);
-                
+
                 if (href === currentSection) {
                     btn.classList.remove('bg-surface-dark', 'text-text-secondary', 'border', 'border-white/10');
                     btn.classList.add('bg-primary', 'text-background-dark');
@@ -178,19 +194,23 @@
             });
         }
 
+        // Aggiorna al caricamento
         updateActiveButton();
+
+        // Aggiorna durante lo scroll
         window.addEventListener('scroll', updateActiveButton);
 
+        // Smooth scroll quando si clicca sui bottoni
         navButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
+
                 if (targetSection) {
-                    const offset = 120;
+                    const offset = 120; // Offset per header fisso
                     const targetPosition = targetSection.offsetTop - offset;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
