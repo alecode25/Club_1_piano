@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // ===== URL APPS SCRIPT =====
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1D2Ut2BWdXmOhjLwWx8x2SyvMRODm4UoTw1G9re5vKs2rMV8fPm0v-9ZRuoRpXWvccw/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyr01cl0SaNZxVGC75-6VkTu3h7XPxJ9zL7YZXv9LwIFleSlqlnCAYm55xtUVTOpPU6qg/exec';
 
     // ===== Riferimenti base =====
     const btnPrimary = document.querySelector('.btn-primary');
