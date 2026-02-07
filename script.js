@@ -190,13 +190,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== CONFIGURAZIONE RISTORANTE =====
     const CONFIG = {
-        giorniChiusiSempre: [1],
+        giorniChiusiSempre: [1], // Lunedì e Martedì chiusi
         giorniChiusiSpecifici: [
-            // Formato 'YYYY-MM-DD' esempio:
-            //'2024-08-15',
-            //'2024-11-01'
-            //'2024-12-25',
-            //'2024-12-31'
+            '2026-02-07', // Carnevale
         ],
         capienzaMax: 140,
         prenotazioni: []
