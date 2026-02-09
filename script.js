@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const CONFIG = {
         giorniChiusiSempre: [1], // Lunedì e Martedì chiusi
         giorniChiusiSpecifici: [
-            '2026-02-07', // Carnevale
+            '2026-02-10', 
         ],
         capienzaMax: 140,
         prenotazioni: []
