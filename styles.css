@@ -105,7 +105,13 @@ body {
     margin-bottom: 25px;
 }
 
+.buttons a {
+    display: block;
+    width: 100%;
+}
+
 .btn {
+    width: 100%;
     padding: 16px 24px;
     font-size: 14px;
     font-weight: 600;
@@ -130,12 +136,12 @@ body {
 
 .btn-secondary {
     background-color: transparent;
-    color: #fff;
-    border: 2px solid #fff;
+    color: #ffb300;
+    border: 2px solid #ffb300;
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 179, 0, 0.1);
     transform: translateY(-2px);
 }
 
@@ -1352,10 +1358,16 @@ select.form-input {
         justify-content: center;
     }
 
+    .buttons a {
+        flex: 1;
+        width: auto;
+    }
+
     .btn {
         padding: 18px 32px;
         font-size: 15px;
-        min-width: 250px;
+        width: 100%;
+        flex: 1;
     }
 
     .menu-section {
