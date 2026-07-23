@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ===== CONFIGURAZIONE RISTORANTE =====
     const CONFIG = {
-        giorniChiusiSempre: [1], // Lunedì e Martedì chiusi
+        giorniChiusiSempre: [2], // Martedì chiuso
         giorniChiusiSpecifici: [
             '2026-02-10', 
         ],
