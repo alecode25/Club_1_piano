@@ -615,6 +615,32 @@ body {
     text-transform: uppercase;
 }
 
+.reservation-section .reservation-container-embed {
+    max-width: 900px;
+}
+
+.reservation-embed {
+    margin-top: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 179, 0, 0.2);
+    overflow: hidden;
+    background: #000;
+}
+
+/* Altezza fissa: il contenuto del gestionale sta tutto dentro, niente scroll interno */
+.reservation-iframe {
+    display: block;
+    width: 100%;
+    height: 980px;
+    border: 0;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+.reservation-iframe::-webkit-scrollbar {
+    display: none;
+}
+
 .booking-form {
     display: flex;
     flex-direction: column;
@@ -1334,6 +1360,10 @@ select.form-input {
 @media (min-width: 768px) {
     .hero-section {
         padding: 0;
+    }
+
+    .reservation-iframe {
+        height: 1030px;
     }
 
     .logo {
